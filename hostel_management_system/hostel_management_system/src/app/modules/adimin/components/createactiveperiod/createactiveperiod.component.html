@@ -1,0 +1,92 @@
+<div class="card card-default">
+  <div class="col-md-3">
+    <div *ngIf="feedback_status == 1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+        &times;
+      </button>
+      <i class="icon fas fa-check"></i>
+      <small> {{ feedbackmsg }}</small>
+    </div>
+    <div *ngIf="feedback_status == 2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+        &times;
+      </button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedbackmsg }}</small>
+    </div>
+  </div>
+  <div class="card-header">
+    <h3 class="card-title">Create Active Periods </h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form #createactiveperiodForm="ngForm" (ngSubmit)="createActivePeriod()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Period</label>
+            <select class="form-control select2" name="Period" [(ngModel)]="activeperiod.period_id"
+              style="width: 100%;">
+              <option value="">select period</option>
+              <option *ngFor="let period of periods" [ngValue]="period.period_id">{{ period.period_name }}</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Period Name</label>
+            <input type="text" [(ngModel)]="activeperiod.period_name" name="period_name" class="form-control">
+
+
+
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">start date</label>
+            <input type="date" class="form-control" [(ngModel)]="activeperiod.start_date" name="start_date" required
+              placeholder="Enter start date ">
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">End date</label>
+            <input type="date" class="form-control" name="End_date" [(ngModel)]="activeperiod.end_date" required
+              placeholder="Enter end date ">
+            <input type="hidden" name="activated_by" [(ngModel)]="activeperiod.activated_by">
+            <input type="hidden" name="is_active" [(ngModel)]="activeperiod.is_active">
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+    </form>
+  </div>
+</div>

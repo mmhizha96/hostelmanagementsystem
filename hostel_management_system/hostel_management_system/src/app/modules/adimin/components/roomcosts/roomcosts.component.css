@@ -1,0 +1,11 @@
+.nav-btn {
+  background-color: #24b0ed;
+  color: #000;
+  margin-right: 20px;
+}
+
+.nav-btn:hover {
+  background-color: #c2a458;
+
+
+}

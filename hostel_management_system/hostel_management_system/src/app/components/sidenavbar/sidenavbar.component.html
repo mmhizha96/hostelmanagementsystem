@@ -1,0 +1,144 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+
+  <span class="brand-text brand-link font-weight-light mt-3 pb-2 text-center" >
+<img style="width: 60%;height:auto;" src="assets/dist/img/logo.png" alt="">
+
+  </span>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+
+        <li class="nav-item">
+          <a class="nav-link" >
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Hostels
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+
+            <li class="nav-item">
+              <a routerLink="admin/hostels" class="nav-link" >
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Hostels</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li *ngIf="userrole==1" class="nav-item">
+          <a class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Users
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="admin/user" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Users</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Rooms
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">4</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+
+            <li *ngIf="userrole==1" class="nav-item">
+              <a routerLink="admin/roomtypes" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Room Types</p>
+              </a>
+            </li>
+            <li *ngIf="userrole==1" class="nav-item">
+              <a routerLink="admin/roomcosts" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Room Costs</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="admin/Resevations" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Resavations</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Periods
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <!-- <li class="nav-item">
+              <a routerLink="admin/createactiveperiods" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Create Periods</p>
+              </a>
+            </li> -->
+            <li class="nav-item">
+              <a routerLink="admin/Allperiods" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Periods</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li *ngIf="role==1"  class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Batches
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul  class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="admin/createBatch" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Create a Batch</p>
+              </a>
+            </li>
+          </ul>
+        </li> -->
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+<br />

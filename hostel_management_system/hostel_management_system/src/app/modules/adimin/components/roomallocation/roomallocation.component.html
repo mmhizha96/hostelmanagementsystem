@@ -1,0 +1,267 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="card-header">
+
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div *ngIf="feddback_message_status==1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feddback_message_status==2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+<div *ngIf="myrights.allocate_rooms" class="card card-default">
+
+  <div class="card-header">
+    <h3 class="card-title">Allocate Rooms for {{residenceSession.session_name}} </h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+        <label for="">Gender</label>
+        <select (change)=" getroomsToallocate()" class="form-control mb-2" [(ngModel)]="roomgender">
+
+          <option value="m">male</option>
+          <option value="f">female</option>
+        </select>
+      </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtoptions"
+      [dtTrigger]="dtTrigger">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>room Number </th>
+          <th>Room Price </th>
+          <th>Room Type </th>
+          <th>Floor</th>
+          <th>Reserved</th>
+          <th>Hostel</th>
+          <th>Location </th>
+          <th>action</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of roomstoallocate; let i = index">
+          <td>{{ i }}</td>
+          <td>{{ room.room_number}}</td>
+
+          <td>{{ room.room_price }}</td>
+          <td>{{ room.room_type }}</td>
+          <td>{{ room.floor_name}}</td>
+          <td *ngIf="room.resavation_id!=null">Yes</td>
+          <td *ngIf="room.resavation_id==null">No</td>
+          <td>{{ room.hostel_name }}</td>
+
+          <td>{{ room.location_name }}</td>
+          <td><button class="btn btn-primary btn-sm" (click)="setroomid(room.room_id)" data-toggle="modal"
+              [attr.data-target]="'#edit-modal-sm' + i">allocate</button></td>
+
+          <div class="modal fade" id="edit-modal-sm{{ i }}">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Room Allocation</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form #edithostel="ngForm">
+                    <label for="">Registration Number</label>
+                    <input type="text" required class="form-control" name="reg_number"
+                      [(ngModel)]="roomallocation.reg_number">
+                    <input type="hidden" required class="form-control" [value]="room.room_id" name="room_id"
+                      [(ngModel)]="roomallocation.room_id">
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                        Close
+                      </button>
+                      <button type="submit" (click)="allocateRooms() " data-dismiss="modal" class="btn btn-primary btn-sm">
+                        Save changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Pending room allocation for {{residenceSession.session_name}}</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+          aria-labelledby="custom-tabs-one-home-tab">
+          <div class="card-body">
+            <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtoptions"
+              [dtTrigger]="dtTrigger">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Regstration Number </th>
+
+
+                  <th>Room Number </th>
+                <th>Room Type</th>
+                  <th>Floor</th>
+                  <th>Hostel </th>
+                  <th>Location </th>
+
+                  <th>action</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let allocation of batchallocations_pending; let i = index">
+                  <td>{{ i }}</td>
+                  <td>{{ allocation.reg_number}}</td>
+
+                  <td>{{ allocation.room_number }}</td>
+                  <td>{{ allocation.room_type }}</td>
+                  <td>{{ allocation.floor_name}}</td>
+                  <td>{{ allocation.hostel_name }}</td>
+
+                  <td>{{ allocation.location_name }}</td>
+                  <td class="btn-group">
+                    <i class="fa fa-ellipsis-h fa-lg" data-toggle="dropdown"></i>
+
+                    <span class="sr-only">Toggle Dropdown</span>
+                    <div *ngIf="myrights.approve_allocations" class="dropdown-menu" style="margin-right: 40px" role="menu">
+                      <a class="dropdown-item mx-auto"  (click)="approve_reject(1,allocation.room_allocation_id)" >
+                        <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        Approve
+                      </a>
+                      <a class="dropdown-item"  (click)="approve_reject(2,allocation.room_allocation_id)" >
+                        <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        Reject
+                      </a>
+
+
+
+                    </div>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>
+
+<!-- DataTables -->
+
+<!-- Main content -->
+<section  class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Approved room allocation for {{residenceSession.session_name}}</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+          aria-labelledby="custom-tabs-one-home-tab">
+          <div class="card-body">
+            <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtoptions"
+              [dtTrigger]="dtTrigger">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Regstration Number </th>
+
+
+                  <th>Room Number </th>
+                  <th>Room Type </th>
+                  <th>Floor</th>
+                  <th>Hostel </th>
+                  <th>Location </th>
+
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let allocation of batchallocations_appproved; let i = index">
+                  <td>{{ i }}</td>
+                  <td>{{ allocation.reg_number}}</td>
+
+                  <td>{{ allocation.room_number }}</td>
+                  <td>{{ allocation.room_type }}</td>
+                  <td>{{ allocation.floor_name}}</td>
+                  <td>{{ allocation.hostel_name }}</td>
+
+                  <td>{{ allocation.location_name }}</td>
+
+
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>

@@ -1,0 +1,199 @@
+<div class="row">
+  <div class="col-md-9"></div>
+  <div class="col-md-3">
+    <div *ngIf="feddback_message_status==1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feddback_message_status==2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header  " style="height: 33px;">
+
+
+
+
+
+    <div class="card-tools">
+
+      <a routerLink="../batches" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+       Batches
+      </a>
+
+      <a routerLink="../Allperiods" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+        Periods
+      </a>
+
+
+
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<div class="row p-3">
+  <div class="col-12 col-sm-12">
+    <div class="card card-default card-tabs">
+      <div class="card-header p-0 pt-1">
+        <div class="row">
+          <div class="col-md-10">
+            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home"
+                  role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Available hostels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile"
+                  role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Add hostels</a>
+              </li>
+
+
+
+            </ul>
+          </div>
+          <div class="col-md-2 text-sm"> <a class="btn btn-default" routerLink="../roompreference"> go to Room
+              preference </a></div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="custom-tabs-one-tabContent">
+          <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+            aria-labelledby="custom-tabs-one-home-tab">
+            <div class="card-body">
+              <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtoptions"
+                [dtTrigger]="dtTrigger">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Location </th>
+                    <th>Hostel </th>
+
+                    <th *ngIf="userrole==1">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hostel of batchhostels; let i = index">
+                    <td>{{ i }}</td>
+
+
+                    <td>{{ hostel.location_name }}</td>
+                    <td>{{ hostel.hostel_name}}</td>
+
+                    <td class="btn-group">
+
+
+
+                      <button class="btn btn-danger btn-sm" *ngIf="userrole==1" data-toggle="modal"
+                        [attr.data-target]="'#modal-sm' + i">
+                        <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                      </button>
+                    </td>
+                    <!-- delete modal small -->
+                    <div class="modal fade" id="modal-sm{{ i }}">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Confimation</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p class="text-sm">
+                              Are you sure you want to delete
+                              &hellip;
+                            </p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                              Cancel
+                            </button>
+                            <button type="button" (click)="removeHostel(hostel)" data-dismiss="modal"
+                              class="btn btn-danger btn-sm">
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+
+                    <!-- /.modal -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+            aria-labelledby="custom-tabs-one-profile-tab">
+            <!-- /.card-header datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" -->
+
+
+
+            <div class="card-body">
+              <!-- <div class="row " >
+
+          <div class="col-md-10"></div>
+          <div class="col-md-2"> <select name="" id="" class="form-control mb-2"  >
+           <option value="">select hostel</option>
+           </select></div>
+         </div> -->
+              <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtoptions"
+                [dtTrigger]="dtTrigger">
+
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Location </th>
+                    <th>Hostel </th>
+
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hostel of hostelstoadd; let i = index">
+                    <td>{{ i }}</td>
+                    <td>{{ hostel.hostel_name}}</td>
+
+                    <td>{{ hostel.location_name }}</td>
+
+                    <td class="btn-group">
+                      <button class="btn btn-primary btn-sm" (click)="setHostelPreference(hostel)" data-toggle="modal"
+                        [attr.data-target]="'#modal-sm'">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i> ADD
+                      </button>
+
+
+
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>

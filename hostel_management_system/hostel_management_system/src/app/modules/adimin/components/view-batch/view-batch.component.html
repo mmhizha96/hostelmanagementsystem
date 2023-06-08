@@ -1,0 +1,255 @@
+<div class="row">
+  <div class="col-md-9"></div>
+  <div class="col-md-3">
+    <div *ngIf="feddback_message_status==1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feddback_message_status==2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header  " style="height: 33px;">
+
+
+
+
+
+    <div class="card-tools">
+
+      <a routerLink="../Resevations" type="button"  *ngIf="myrights.reserve_rooms" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+       Resavations
+      </a>
+
+      <a routerLink="../roomallocation" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+        Allocation
+      </a>
+
+
+      <a routerLink="../batches" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        Batches
+      </a>
+
+      <a routerLink="../Allperiods" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+        Periods
+      </a>
+
+
+
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="card card-default" *ngIf="myrights.hostel_preference">
+
+  <div class="card-header">
+    <h3 class="card-title">Create Hostels Preference</h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form #createHostelpeferenceForm="ngForm">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Location</label>
+
+            <select class="form-control select2" name="location_id" required (change)="getHostels(location_id)"
+              style="width: 100%;" [(ngModel)]="location_id">
+
+              <option value=""> select location </option>
+              <option *ngFor="let location  of locations" [ngValue]="location.location_id"> {{location.location_name}}
+              </option>
+
+            </select>
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Hostel Name</label>
+            <select class="form-control select2" name="hostel_id" required (change)="getfloors(hostelpreference.hostel_id)" style="width: 100%;" [(ngModel)]="hostelpreference.hostel_id">
+              <option value=""> select hostel </option>
+              <option *ngFor="let hostel of hostels" [ngValue]="hostel.hostel_id">{{hostel.hostel_name}}</option>
+
+            </select>
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Floor</label>
+
+            <select class="form-control select2" name="floor_id" required style="width: 100%;"  [(ngModel)]="hostelpreference.floor_id">
+              <option value=""> select floor </option>
+              <option value="All"> All Floors </option>
+              <option *ngFor="let floor of floors" [ngValue]="floor.floor_id">{{floor.floor_name}}
+              </option>
+
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- /.row -->
+
+
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <button class="btn btn-primary"  data-toggle="modal" [attr.data-target]="'#Createmodal'" [disabled]="createHostelpeferenceForm.form.invalid" >Create
+            preference</button>
+        </div>
+
+        <div class="modal fade" id="Createmodal">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Confimation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-sm">
+                  Are you sure you want create preference
+                &hellip;
+                </p>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                  Cancel
+                </button>
+                <button type="button" data-dismiss="modal" (click)="setHostelPreference()"
+                  class="btn btn-danger btn-sm">
+                  Create
+                </button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header  " style="height: 33px;">
+
+
+
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+  <div class="card-body">
+
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtoptions"
+      [dtTrigger]="dtTrigger">
+
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Location </th>
+          <th>Hostel </th>
+          <th>Floor</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hostel of batchhostels; let i=index">
+          <td>{{i}}</td>
+          <td>{{hostel.location_name}}</td>
+
+          <td>{{hostel.hostel_name}}</td>
+          <td>{{hostel.floor_name}}</td>
+
+          <td class="btn-group">
+            <button class="btn btn-danger btn-sm"  data-toggle="modal" [attr.data-target]="'#modal-sm'+i">
+            <i class="fas fa-trash-alt    "></i> Delete
+            </button>
+
+
+
+          </td>
+
+          <div class="modal fade" id="modal-sm{{ i }}">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Confimation</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-sm">
+                    Are you sure you want to delete {{hostel.floor_name}}
+                  &hellip;
+                  </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" data-dismiss="modal" *ngIf="myrights.hostel_preference" (click)=" removeHostel(hostel)"
+                    class="btn btn-danger btn-sm">
+                    Delete
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+  <!-- /.card -->
+</div>

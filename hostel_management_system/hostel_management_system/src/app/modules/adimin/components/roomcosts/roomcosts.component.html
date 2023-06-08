@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="card-header">
+
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div *ngIf="feddback_message_status==1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feddback_message_status==2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+<div *ngIf="myrights.create_room_costs" class="card">
+  <div class="card-header  " style="height: 33px;">
+
+    <div class="card-tools">
+
+      <a routerLink="../Allperiods" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        Periods
+      </a>
+
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+</div>
+<div class="card card-default">
+
+  <div class="card-header">
+    <h3 class="card-title">Set Room Cost </h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form #setroomcostForm="ngForm" (ngSubmit)="setRoomTypeCost(setroomcostForm)">
+
+
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Period</label>
+            <select class="form-control select2" required name="active_period_id" (change)=" getroomtypeCosts(setroomcostForm.value.active_period_id)" ngModel style="width: 100%;">
+              <option value="">select period</option>
+              <option *ngFor="let period of periods" [ngValue]="period.active_period_id">{{period.period_name}}</option>
+
+            </select>
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Room Type</label>
+            <select class="form-control select2" required name="room_type_id" ngModel style="width: 100%;">
+              <option value="">select room type</option>
+              <option *ngFor="let roomtype of roomTypes" [ngValue]="roomtype.room_type_id">{{roomtype.room_type}}
+              </option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <!-- /.col -->
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Cost</label>
+            <input type="number" class="form-control" min="1" name="room_price" required placeholder="Enter room price"
+              ngModel>
+          </div>
+
+        </div>
+
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <button class="btn btn-primary" [disabled]="setroomcostForm.form.invalid" type="submit">Create</button>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+    </form>
+  </div>
+</div>
+
+<!-- DataTables -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+
+      <div class="card-header">
+        <h3 class="card-title">Room Costs</h3>
+      </div>
+
+      <!-- /.card-header -->
+      <div class="card-body">
+
+
+
+
+        <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger"
+          class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Room Types</th>
+              <th>period</th>
+              <th>Costs</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let roomtypecost of roomTypeCost; let i = index">
+              <td>{{ i }}</td>
+              <td>{{ roomtypecost.room_type }}</td>
+              <td>{{roomtypecost.period_name }}</td>
+              <td>{{roomtypecost.room_price}}</td>
+
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>

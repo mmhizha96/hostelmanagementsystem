@@ -1,0 +1,60 @@
+<div class="hold-transition login-page">
+  <div class="" style="width: 500px;">
+
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-header text-center font-weight-bold">
+        Student Online Hostel Application
+      </div>
+      <div class="login-logo">
+        <img src="assets/images/logo.png" style="height: 130px;" alt="">
+      </div>
+      <div class="card-body login-card-body">
+        <p class="login-box-msg font-weight-bold">Login to start your session</p>
+
+        <form #loginform="ngForm" (ngSubmit)="login(loginform)">
+          <div class="input-group mb-3">
+            <input type="text" name="reg_number" (ngModelChange)="hideError()" required class="form-control"
+              [ngModel]="student.reg_number" placeholder="Email/username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" (ngModelChange)="hideError()" required name="password"
+              [ngModel]="student.password" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="error!=null" class="bg-danger p-3">
+            {{error}}
+          </div>
+
+          <div class="row pt-2">
+            <div class="col-8" style="float:right">
+
+
+
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" [disabled]="loginform.invalid" class="btn  btn-block"
+                style="background-color: #24b0ed; color: #fff;">Sign In &nbsp;<img *ngIf="loading" style="width:25%;"
+                  src="https://i.gifer.com/ZKZg.gif" /></button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+
+
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+</div>

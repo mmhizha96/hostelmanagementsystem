@@ -1,0 +1,135 @@
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Available Rooms</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+
+       <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger"  class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+
+            <th>No</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Hostel Name</th>
+            <th>Room Gender</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let _room of rooms, let i=index">
+
+            <td>{{ i }}</td>
+            <td>{{  _room.room_number}}</td>
+            <td>{{ _room.room_type }}</td>
+            <td>{{ _room.hostel_name }}</td>
+            <td>{{ _room.room_gender }}</td>
+            <td class="btn-group"><button  class="btn btn-primary btn-sm"   (click)="setRoomId(_room)" data-toggle="modal" [attr.data-target]="'#edit-modal-lg'+i">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="setRoomId(_room)" data-toggle="modal" [attr.data-target]="'#modal-sm'+ i ">Delete</button>
+            </td>
+            <!-- delete modal small -->
+<div class="modal fade" id="modal-sm{{ i }}">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confimation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-sm" >Are you sure you want to delete room {{  _room.room_number }}&hellip;</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button"  class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+        <button type="button" (click)="deleteRoom()"  data-dismiss="modal" class="btn btn-danger btn-sm">Delete</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- update modal -->
+<!-- update modal -->
+<div class="modal fade"  id="edit-modal-lg{{ i }}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form #edithostel="ngForm" >
+        <div class="row">
+          <div class="col-md-6">
+            <label for="">Room Number</label>
+        <input type="text" required class="form-control"  name="room_number" [(ngModel)]="room.room_number">
+          </div>
+
+          <div class="col-md-6">
+            <label for=""> Room Type</label>
+                 <select class="form-control select2"   name="room_type" [(ngModel)]="room.room_type" style="width: 100%;">
+
+            <option  [ngValue]="roomtypes.box"  >Box</option>
+            <option  [ngValue]="roomtypes.single"  >Single</option>
+            <option  [ngValue]="roomtypes.double"  >Double</option>
+          </select>
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="col-md-6">
+            <label for=""> Room Gender</label>
+                 <select class="form-control select2"   name="room_gender" [(ngModel)]="room.room_gender" style="width: 100%;">
+
+            <option  [ngValue]="roomgender.male"  >Male</option>
+            <option  [ngValue]="roomgender.female"  >Female</option>
+          </select>
+          </div>
+          <div class="col-md-6">
+            <label for="">Hostel Name</label>
+                 <select class="form-control select2"   name="hostel_id" [(ngModel)]="room.hostel_id" style="width: 100%;">
+            <option *ngFor="let roomhostel of rooms" [ngValue]="roomhostel.hostel_id">{{ roomhostel.hostel_name }}</option>
+
+
+          </select>
+          </div>
+         </div>
+         <div class="row">
+<input type="hidden" name="">
+            <div class="col-md-6">
+              <label for="">Room Capacity</label>
+          <input type="number" required class="form-control"  name="room_capacity" [(ngModel)]="room.room_capacity">
+            </div>
+          </div>
+
+
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" data-dismiss="modal" (click)="updateRoom()" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+          </tr>
+        </tbody>
+    </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>

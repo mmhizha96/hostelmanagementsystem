@@ -1,0 +1,18 @@
+
+.btn {
+  color: #fff;
+}
+
+.btn-table {
+
+border-radius: 10px;
+background-color: #24b0ed;
+
+}
+
+.btn-table:hover{
+  border: 2px solid #fff;
+border-radius: 15px;
+background-color:  #c2a458;;
+
+}

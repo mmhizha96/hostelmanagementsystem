@@ -1,0 +1,16 @@
+.main-sidebar {
+  background-color: #24b0ed;
+  color: #fff;
+}
+
+.nav-item .nav-link {
+  color: #fff;
+}
+
+.nav-item:hover {
+  border: 2px solid #fff;
+border-radius: 25px;
+
+  background-color:  #c2a458;;
+
+}

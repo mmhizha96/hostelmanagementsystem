@@ -1,0 +1,274 @@
+<div class="row">
+  <div class="col-md-9"></div>
+  <div class="col-md-3">
+    <div *ngIf="feddback_message_status==1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feddback_message_status==2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header  " style="height: 33px;">
+
+
+
+
+
+    <div class="card-tools">
+
+      <a routerLink="../batches" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+       Batches
+      </a>
+
+      <a routerLink="../Allperiods" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+        Periods
+      </a>
+
+
+
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+
+   <div class="card-body">
+    <form #createHostelpeferenceForm="ngForm">
+      <div class="row">
+
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Period</label>
+            <select class="form-control select2" (change)="getBatches(batchmodel.active_period_id)" name="active_period_id" #active_period_id required  style="width: 100%;"  [(ngModel)]="batchmodel.active_period_id" >
+              <option value=""> select period</option>
+
+
+              <option *ngFor="let period of active_Periods" [ngValue]="period.active_period_id"> {{period.period_name}}</option>
+
+
+            </select>
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Batch</label>
+
+            <select class="form-control select2" name="batch_id" (change)="batchChange()" required style="width: 100%;" [(ngModel)]="batchmodel.residence_session_id"  >
+              <option value=""> select batch </option>
+
+              <option *ngFor="let batch of batches"   [ngValue]="batch.residence_session_id"  > {{batch.session_name}} </option>
+
+
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </form>
+   </div>
+
+
+
+</div>
+
+<div class="row p-3">
+  <div class="col-12 col-sm-12">
+    <div class="card card-default card-tabs">
+      <div class="card-header p-0 pt-1">
+        <div class="row">
+          <div class="col-md-10">
+            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home"
+                  role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Reserved Rooms</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile"
+                  role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Available Rooms</a>
+              </li>
+
+
+
+            </ul>
+          </div>
+
+
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="custom-tabs-one-tabContent">
+          <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+            aria-labelledby="custom-tabs-one-home-tab">
+            <div class="card-body">
+
+              <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger"  class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+
+                    <th>No</th>
+                    <th>Room Number</th>
+                    <th>Floor</th>
+                    <th>Hostel</th>
+                    <th>Location</th>
+                    <th>session_name</th>
+                    <th>Action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let _room of rooms, let i=index">
+
+                    <td>{{ i }}</td>
+                    <td>{{  _room.room_number}}</td>
+                    <td>{{ _room.floor_name }}</td>
+                    <td>{{ _room.hostel_name }}</td>
+
+                    <td>{{ _room.location_name }}</td>
+
+                    <td>{{ _room.session_name }}</td>
+
+                    <td >   <button class="btn btn-danger btn-sm" (click)="setRoom(_room)" data-toggle="modal" [attr.data-target]="'#modal-md-unreserve'+ i "><i class="fa fa-trash"></i> Delete</button>
+                     </td>
+                    <div class="modal fade" id="modal-md-unreserve{{ i }}">
+                      <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Confimation</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p class="text-sm" >Are you sure you want to unreserve room {{  _room.room_number }}&hellip;</p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button"  class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                            <button type="button" (click)=" unReserve()" *ngIf="myrights.reserve_rooms" data-dismiss="modal" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> Delete</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+
+
+                  </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+            aria-labelledby="custom-tabs-one-profile-tab">
+            <!-- /.card-header datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" -->
+
+
+
+            <div class="card-body">
+              <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger"  class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+
+                  <th>No</th>
+                  <th>Room Number</th>
+                  <th>Floor</th>
+                  <th>Hostel</th>
+                  <th>Location</th>
+
+                  <th>Action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let _room of roomstoreserve, let i=index">
+                    <td>{{ i }}</td>
+                    <td>{{  _room.room_number}}</td>
+                    <td>{{ _room.floor_name }}</td>
+                    <td>{{ _room.hostel_name }}</td>
+
+
+
+                    <td>{{ _room.location_name }}</td>
+
+                    <td >   <button class="btn btn-primary btn-sm" (click)="setRoom(_room)" data-toggle="modal" [attr.data-target]="'#modal-md-reserve'+ i ">Reserve</button>
+                     </td>
+                    <div class="modal fade" id="modal-md-reserve{{ i }}">
+                      <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Confimation</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p class="text-sm" >Are you sure you want to reserve room {{  _room.room_number }}&hellip;</p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button"  class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                            <button type="button" (click)="reserve(_room)"  *ngIf="myrights.reserve_rooms"  data-dismiss="modal" class="btn btn-danger btn-sm"> reserve</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+
+
+                  </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

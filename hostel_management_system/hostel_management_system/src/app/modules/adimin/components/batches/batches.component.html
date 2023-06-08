@@ -1,0 +1,395 @@
+<div class="row">
+  <div class="col-md-9">
+
+  </div>
+  <div class="col-md-3">
+    <div *ngIf="feedback_status == 1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+        &times;
+      </button>
+      <i class="icon fas fa-check"></i>
+      <small> {{ feedbackmsg }}</small>
+    </div>
+    <div *ngIf="feedback_status == 2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+        &times;
+      </button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedbackmsg }}</small>
+    </div>
+  </div>
+</div>
+<div class="card" *ngIf="myrights.create_periods">
+  <div class="card-header  " style="height: 33px;">
+
+    <div class="card-tools">
+
+      <a routerLink="../roomcosts" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        Room Cost
+      </a>
+
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+</div>
+<div class="card card-default">
+
+
+  <div class="card-header">
+    <h3 class="card-title">Create A Batch </h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form #createbatchForm="ngForm" (ngSubmit)="createBatch()">
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Period</label>
+            <select class="form-control select2" required disabled="" name="active_period_id"
+              [(ngModel)]="batch.active_period_id" style="width: 100%;">
+
+              <option *ngFor="let period of activeperiods" [ngValue]="period.active_period_id">{{ period.period_name }}
+              </option>
+
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Batch Name</label>
+            <input type="text" name="session_name" required [(ngModel)]="batch.session_name" class="form-control">
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Academic Year</label>
+            <select class="form-control select2" required [(ngModel)]="batch.level" name="level" style="width: 100%;">
+              <option value="">select year</option>
+              <option *ngFor="let year of years" [ngValue]="year.year">{{ year.year }}</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Semester</label>
+            <select class="form-control select2" name="semester" required [(ngModel)]="batch.semester"
+              style="width: 100%;">
+              <option value="">select semester</option>
+              <option *ngFor="let level of levels" [ngValue]="level.semester">{{ level.semester }}</option>
+            </select>
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Start Date</label>
+            <input type="date" class="form-control" min="{{ date |date:'YYYY-MM-dd'  }}" max="batch.end_date" required
+              name="start_date" [(ngModel)]="batch.start_date" placeholder="Enter start date ">
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">End Date</label>
+            <input type="date" class="form-control" max="{{ max_date | date:'YYYY-MM-dd' }}" required name="End_date"
+              [(ngModel)]="batch.end_date" placeholder="Enter end date ">
+
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-12 text-danger" *ngIf="errormsg !=null">{{errormsg}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <button class="btn btn-primary" [disabled]="createbatchForm.form.invalid" type="submit">Create</button>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+  <div class="card-header">
+    <h3 class="card-title">Batches</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+
+
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger"
+      class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr class="text-sm">
+          <th>#</th>
+          <th>Batch Name</th>
+          <th>Active Status</th>
+          <th>Year</th>
+          <th>Semester</th>
+          <th>Program Driven</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let batch of batches; let i = index" class="text-sm">
+          <td>{{ i}}</td>
+          <td>{{ batch.session_name }}</td>
+          <td *ngIf="batch.available_status == 1" class="text-success">
+            Active
+          </td>
+          <td *ngIf="batch.available_status == 0" class="text-danger">
+            Not Active
+          </td>
+
+          <td>{{ batch.level }}</td>
+          <td>{{ batch.semester }}</td>
+          <td *ngIf="batch.is_program_driven == 0">NO</td>
+          <td *ngIf="batch.is_program_driven == 1">Yes</td>
+          <td>{{batch.start_date}}</td>
+          <td>{{ batch.end_date }}</td>
+          <td class="btn-group">
+            <i class="fa fa-ellipsis-h fa-lg" data-toggle="dropdown"></i>
+
+            <span class="sr-only">Toggle Dropdown</span>
+            <div class="dropdown-menu" style="margin-right: 40px" role="menu">
+              <a class="dropdown-item mx-auto" (click)="goTO('admin/viewbatch',batch)">
+             <i class="fa fa-eye" aria-hidden="true"></i> view
+              </a>
+
+
+              <a class="dropdown-item" *ngIf="myrights.create_periods" data-toggle="modal" (click)="setcreds(batch)"
+                [attr.data-target]="'#edit-modal-lg' + i"><i class="fas fa-edit    "></i>
+                Edit
+              </a>
+
+              <a *ngIf="batch.available_status == 0 && myrights.create_periods" (click)="setcreds(batch)" class="dropdown-item"
+                data-toggle="modal" [attr.data-target]="'#activate-modal-sm' + i"><i class="fa fa-check" aria-hidden="true"></i>
+                activate
+              </a>
+              <a *ngIf="batch.available_status == 1&& myrights.create_periods" (click)="setcreds(batch)" class="dropdown-item"
+                data-toggle="modal" [attr.data-target]="'#deactivate-modal-sm' + i"><i class="fa fa-caret-left"
+                  aria-hidden="true"></i>
+                Deactivate
+              </a>
+              <a *ngIf="myrights.create_periods" class="dropdown-item text-danger" data-toggle="modal" (click)="setcreds(batch)"
+                [attr.data-target]="'#delete-modal-sm' + i"><i class="fa fa-trash" aria-hidden="true"></i>
+                Delete
+              </a>
+            </div>
+          </td>
+          <!-- delete modal small -->
+          <div class="modal fade" id="delete-modal-sm{{ i }}">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Confimation</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-sm">
+                    Are you sure you want to delete batch
+                    {{ batch.session_name }}&hellip;
+                  </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" data-dismiss="modal" (click)="delete()" class="btn btn-danger btn-sm">
+                    Delete
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- activate modal -->
+          <div class="modal fade" id="activate-modal-sm{{ i }}">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Confimation</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-sm">
+                    Are you sure you want to actiavte batch
+                    {{ batch.session_name }}&hellip;
+                  </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" (click)="activate()" data-dismiss="modal" class="btn btn-danger btn-sm">
+                    Activate
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- deactivate modal -->
+          <div class="modal fade" id="deactivate-modal-sm{{ i }}">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Confimation</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-sm">
+                    Are you sure you want to deactiavte batch{{
+                    batch.session_name
+                    }}
+                    &hellip;
+                  </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" (click)="deactivate()" data-dismiss="modal" class="btn btn-danger btn-sm">
+                    Deactivate
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- update modal -->
+          <div class="modal fade" id="edit-modal-lg{{ i }}">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title mx-auto">Update Batch</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form #editbatchform="ngForm">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="">session Name</label>
+                        <input type="text" required class="form-control" required name="session_name"
+                          [(ngModel)]="batchmodel.session_name" />
+                      </div>
+                      <input name="session_id" hidden [(ngModel)]="batchmodel.residence_session_id" />
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="">Start Date</label>
+                        <input type="date" [(ngModel)]="batchmodel.start_date" min="{{ date | date : 'YYYY-MM-dd' }}"
+                          required class="form-control" name="start_date" />
+                      </div>
+                      <div class="col-md-6">
+                        <label for="">End Date</label>
+                        <input type="date" [(ngModel)]="batchmodel.end_date" min="{{ date | date : 'YYYY-MM-dd' }}"
+                          required class="form-control" name="end_date" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="">Year </label>
+                        <select name="level" class="form-control select2" [(ngModel)]="batchmodel.level" required>
+                          <option *ngFor="let year of years" [ngValue]="year.year">
+                            {{ year.year }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="">Semester </label>
+                        <select name="semester" required [(ngModel)]="batchmodel.semester" class="form-control select2">
+                          <option *ngFor="let level of levels" [ngValue]="level.semester">
+                            {{ level.semester }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Close
+                      </button>
+                      <button type="submit" (click)="UpdateBatch()" [disabled]="editbatchform.form.invalid"
+                        data-dismiss="modal" class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>

@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <app-navbar  [style.display]="isVisible ? 'block' : 'none'"></app-navbar>
+
+  <app-sidenavbar [style.display]="isVisible ? 'block' : 'none'"></app-sidenavbar>
+
+
+
+    <router-outlet></router-outlet>
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->

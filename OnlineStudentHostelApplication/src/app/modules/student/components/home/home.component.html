@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-md-9">
+
+  </div>
+  <div class="col-md-3">
+    <div *ngIf="feedback_message_status==1" class=" alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feedback_message_status==2" class="response-alert alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Available Batches</h3>
+      </div>
+      <!-- /.card-header  -->
+      <div class="row">
+
+      </div>
+      <div class="card-body">
+
+        <table class="table  table-hover" >
+          <thead>
+            <tr>
+
+
+
+
+              <th>Batch Name</th>
+              <th>Batch id</th>
+              <th>action</th>
+
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let batch of batches,let i=index">
+
+              <td>{{batch.session_name}}</td>
+              <td>{{batch.residence_session_id}}</td>
+
+
+
+              <td>
+                <button class="btn btn-table btn-sm" (click)="gotoApplication(batch)"> procced to application</button>
+
+              </td>
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>
+
+
+<section class="content"  >
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Your Current Allocation</h3>
+      </div>
+      <!-- /.card-header  -->
+      <div class="row">
+
+      </div>
+      <div class="card-body">
+
+        <table class="table  table-hover" >
+          <thead>
+            <tr>
+
+
+
+              <th>location Name</th>
+              <th>hostel Name</th>
+              <th>floor Name</th>
+              <th>Room Number</th>
+
+
+
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let allocation of myallocations,let i=index">
+
+              <td>{{allocation.location_name}}</td>
+              <td>{{allocation.hostel_name}}</td>
+              <td>{{allocation.floor_name}}</td>
+              <td>{{allocation.room_number}}</td>
+
+
+
+
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>
+
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->

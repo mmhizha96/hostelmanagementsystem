@@ -1,0 +1,188 @@
+<div class="col-md-3">
+  <div *ngIf="feddback_message_status==1" class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <i class="icon fas fa-check "></i>
+    <small> {{ feedback_message }}</small>
+  </div>
+  <div *ngIf="feddback_message_status==2" class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <i class="icon fas fa-ban"></i>
+    <small> {{ feedback_message }}</small>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header  " style="height: 33px;">
+
+
+
+
+
+    <div class="card-tools">
+
+      <a routerLink="../hostels" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        hostels
+      </a>
+
+      <a routerLink="../allrooms" type="button" class="btn btn-primary btn-tool nav-btn">
+        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+        rooms
+      </a>
+
+
+
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<div *ngIf="myrights.create_hostel" class="card card-default">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card-header">
+
+      </div>
+    </div>
+
+  </div>
+  <div class="card-header">
+    <h3 class="card-title">Create floors </h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form #createfloorsForm="ngForm" (ngSubmit)="createFloors(createfloorsForm)">
+
+      <!-- {{createHostelForm.value | json}} -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>hostel</label>
+
+            <select class="form-control select2" disabled #hostel_id="ngModel" name="hostel_id" [(ngModel)]="_hostel_id"
+              style="width: 100%;">
+
+
+              <option *ngFor="let hostel of hostels" value="{{hostel.hostel_id}}">{{ hostel.hostel_name }}</option>
+
+            </select>
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Floor Name</label>
+            <input type="text" class="form-control" name="floor_name" required [(ngModel)]="floor.floor_name"
+              placeholder="Enter hostel name">
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <button class="btn btn-primary" [disabled]="createfloorsForm.form.invalid" type="submit">Create</button>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+    </form>
+  </div>
+</div>
+
+<!-- DataTables -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Available Floors</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger"
+          class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>No</th>
+
+              <th>Floor Name</th>
+
+              <th *ngIf="userrole==1">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let floor of floors; let i = index">
+              <td>{{ i }}</td>
+              <td>{{ floor.floor_name }}</td>
+
+
+              <td *ngIf="userrole==1" class="btn-group">
+
+
+
+                <button class="btn btn-danger btn-sm"  data-toggle="modal" [attr.data-target]="'#modal-sm' + i">
+                  Delete
+                </button>
+              </td>
+              <!-- delete modal small -->
+              <div class="modal fade" id="modal-sm{{ i }}">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Confimation</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="text-sm">
+                        Are you sure you want to delete
+                        {{ floor.floor_name}}&hellip;
+                      </p>
+                    </div>
+
+
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                        Cancel
+                      </button>
+                      <button type="button" data-dismiss="modal" *ngIf="myrights.create_hostel" (click)="deleteFloor(floor)"
+                        class="btn btn-danger btn-sm">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>

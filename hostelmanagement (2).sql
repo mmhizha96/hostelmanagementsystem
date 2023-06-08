@@ -1,0 +1,1728 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 07, 2023 at 03:36 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `hostelmanagement`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(10, '2014_10_12_000000_create_users_table', 1),
+(11, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(12, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(13, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(14, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(15, '2016_06_01_000004_create_oauth_clients_table', 1),
+(16, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(17, '2019_08_19_000000_create_failed_jobs_table', 1),
+(18, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_access_tokens`
+--
+
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `client_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `scopes` text DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('0017f14e5bfbd4d2613cdea46240f5bcbacefe0634c4c1a473dac0006e38bdb46e770d99b17303da', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 05:13:49', '2023-05-20 05:13:49', '2023-05-20 08:13:49'),
+('0034d3867c62bbfd8bba4bcdaac0f702257900d6c6c24ec323adc5d25a22d710ca8467db5b899f58', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 07:14:12', '2023-05-29 07:14:12', '2023-05-29 10:14:12'),
+('01629b1bd82f4958fa766646114f6d304c44552de554c595e9931701a4f9d6a5c9540167636cd653', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 07:42:00', '2023-05-30 07:42:00', '2023-05-30 10:42:00'),
+('01a5257de642a0cda2c9e7bd6ad4ce808d8ce070b6e8cdb1db77bec541bc4fbde9ce7182dcae6911', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:53:29', '2023-05-27 07:53:29', '2023-05-27 10:53:29'),
+('0284226d7d1b924ff851e23a0bd6f9c2f0f8338e69382701edbc15e33f325c7204497ecd4f600387', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 07:12:18', '2023-05-29 07:12:18', '2023-05-29 10:12:18'),
+('02e3625c02237f670da4b02b163f7497efef0ae51add1dd995b2a8da5a6d1ab160e64ecfbd43e58f', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 18:09:58', '2023-05-28 18:09:58', '2023-05-28 21:09:58'),
+('03420c598d99ee18e57b9e87e1b40fb1acffa89ac4503109fac6c1b3579c1e8d8f9d4396276c9413', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 11:02:16', '2023-05-31 11:02:16', '2023-05-31 14:02:16'),
+('04200eb72557887444c5ba90dfa9ef27b824076cd5095a8d97b980e6fd79f86d33690ec463c7f59b', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 16:08:33', '2023-05-25 16:08:33', '2023-05-25 19:08:33'),
+('05a4d257e4ac453e29eb75f19f36e1dcd538ad5ef18f2180a7e4e169fb8c1a941caa3f520c016dd5', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 05:49:27', '2023-05-30 05:49:27', '2023-05-30 08:49:27'),
+('05b97525d47dfddbdc676b60667be36c85429cdf017301b25101312fb60ebfd7d4903943a729d3b1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 09:56:07', '2023-05-17 09:56:07', '2023-05-17 12:56:07'),
+('06d63525ad4ecc6af7ab714fb17100651286122ac7ac31244ec76554c6b99fb27f384a6291a8d6c9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 10:23:53', '2023-05-30 10:23:53', '2023-05-30 13:23:53'),
+('093b63671ffba3b2addf25e4d463b1af181d0ef79c674b7495596f9da22b64b15d894572bf4680e4', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-24 05:08:46', '2023-05-24 05:08:46', '2023-05-24 08:08:46'),
+('0a70a384c7badbe85a64a209b4e63b8483f008d1e49de81e3f79b2254e1e2fdcf15b4f45b2de572d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 04:51:39', '2023-06-01 04:51:39', '2023-06-01 07:51:39'),
+('0b8fec7ca3bf85c2e43a9c0492f408aa6ab760fd285cc6be7a80b3a59e69a806c9984dd2cca1dacc', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 16:45:39', '2023-05-30 16:45:39', '2023-05-30 19:45:39'),
+('0cd3f2932fe000b760fb1b265783a7aa45843bc0a8aada141446493024b92ef5e987180c42c6c72b', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 07:35:06', '2023-05-22 07:35:06', '2023-05-22 10:35:06'),
+('0d91302057deb9a0e4de13e7ef05ef77806409684cf398236deaa85a10d0c2f8be34915d3dd2c7d8', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:54:32', '2023-05-30 12:54:32', '2023-05-30 15:54:32'),
+('0fa707b9e179a3d2fe5c0667189ba8d09ac619f38a3be2785ac3899ea75f536fc692e971be30b512', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-21 16:16:08', '2023-05-21 16:16:09', '2023-05-21 19:16:08'),
+('111d7ee58168ba010261dfef189eab1538f3869b1df0766beaa9ac69853a62fcaba6d445f437e470', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 05:50:35', '2023-05-16 05:50:35', '2023-05-16 08:50:35'),
+('1131d14596437a1ec36f412e5c8df374eb63a225235aee262e51aa1deff13d11affca74f7fdb1bb3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 05:07:23', '2023-05-17 05:07:23', '2023-05-17 08:07:23'),
+('129d6ff6c7852c3613f3b214f9479d5ee6374093e4a4e269f783a23c984c956662d5821c80d0a4d0', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:45:35', '2023-06-01 11:45:35', '2023-06-01 14:45:35'),
+('137016bcd7679b299ca8b52af3b0dc6bd68b0cf41e8852aca2180eef31d404bd687f42fd5d7df9c5', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 05:06:56', '2023-05-31 05:06:56', '2023-05-31 08:06:56'),
+('14490a0683b2d09e45e86f0c8b59d3154c51c364d01dfe8bf8ffe384907b7efa0eee88bad04c5053', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:33:44', '2023-05-16 08:33:44', '2023-05-16 11:33:44'),
+('14d9e16a85410d856db4e43bd97736bc4a7307d671f75abac309ee4753045f776b011294bc4493d5', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-24 04:02:57', '2023-05-24 04:02:57', '2023-05-24 07:02:57'),
+('14f6ed898d662668c928c54fcfd437750aec99efbdb981505c661db272c159b8f368336d690b48d2', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:53:45', '2023-06-01 11:53:45', '2023-06-01 14:53:45'),
+('15062a86ffe0ad170f67b4deb24d1e3fb7670c6e3e38d41964f53bea04d73a01a3c4aa23235744d3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:39:57', '2023-05-17 07:39:57', '2023-05-17 10:39:57'),
+('15ed50851d35acc05abf1fe47fcd8090a071f79ef985775390d505e8902942e95323f3726afe48be', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 13:53:38', '2023-05-25 13:53:38', '2023-05-25 16:53:38'),
+('16748ddd121dbfed98264f03d75ef008de32c629272f05e2ad4790ccac61b1080ebea63f55a82af9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 04:13:55', '2023-06-06 04:13:55', '2023-06-06 07:13:55'),
+('1686438b8bf722e694396cc695018ab13eed41624f21165b5f2845e074edabef43421cdc2287fbe5', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:30:54', '2023-05-25 14:30:54', '2023-05-25 17:30:54'),
+('16bb55d14fd0ebaa66aa37b9668b8db5fba256936997599c144ec6224aa11b5aa64b9176ff2856d8', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 09:53:06', '2023-05-17 09:53:06', '2023-05-17 12:53:06'),
+('18865ab157d96af8465abc4d084669155fae94695d6760f36a3133af42b07fbf7c0c9e42faed17cd', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:24:34', '2023-05-16 12:24:34', '2023-05-16 15:24:34'),
+('18e1a8769716d44281fc53ddb7c6c8da0850e6d289d822521c6c172f2853c9b9d4df4853f463a541', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:08:25', '2023-06-01 12:08:25', '2023-06-01 15:08:25'),
+('18e406bc98d0cb70ee397f4547de80b0e4fd2b2404d2c68a3d8ad9e5eb6d1e5feeee4f424af99054', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 04:20:23', '2023-05-18 04:20:23', '2023-05-18 07:20:23'),
+('191d8cd4d0145bee83c097bd071538199fb15b95bd4f90f7a28d0b1e9866fb7022a39e91ac06522a', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:10:04', '2023-05-17 07:10:05', '2023-05-17 10:10:04'),
+('193e4d78d42e62a45a9e466f93470b7c253b12ac51dbf71898a15f3cbf2d1da33a5f5eb7d6d49b27', 12, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-26 00:59:03', '2023-05-26 00:59:03', '2023-05-26 03:59:03'),
+('1a0600e025af7f18e3552ca00afbd87d0c7d0c6cc35b429a8de18e875b5a4bf9877b01360d137a82', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-21 02:34:49', '2023-05-21 02:34:49', '2023-05-21 05:34:49'),
+('1ac4e9bd0f17ad8fc46c8c07ab06dd78dbe2f733362a78ad6cd1392810bee5ebc90caa2b3a665474', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 08:36:18', '2023-05-28 08:36:18', '2023-05-28 11:36:18'),
+('1aea53396534a33eb056030b0559d6fbc951783bb69fe450d09132251b854264c80f73d7672f7e44', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 11:49:15', '2023-05-17 11:49:15', '2023-05-17 14:49:15'),
+('1b6da0919e4b7564ad88774cbaf95a40a3c61ae2df178a6e4277064f680ec1a61a295ef5592e71fd', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:38:20', '2023-05-16 10:38:20', '2023-05-16 13:38:20'),
+('1b7496abf9b59a4b3fa51085fb9ffc0189adc4b39f8b27e32f58b7a7f0863049a9d8af419a8b3d54', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-07 06:17:10', '2023-06-07 06:17:10', '2023-06-07 09:17:10'),
+('1b76d8e42f4a7618228d2b314392ac44d2efb7e5201a2f0a9607400f1053b428721dd99f27c98dac', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:32:42', '2023-05-25 14:32:43', '2023-05-25 17:32:42'),
+('1c591a74b71a94e3742b3a7efe4726ee15347738a2349693788d1d983a80b97cfed8c2ef1f5b08c8', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:53:52', '2023-05-27 07:53:52', '2023-05-27 10:53:52'),
+('1cf2792e03233ab9b0867f7014ac46f39e3c1346b7dee53a0ec7b540f5e49d11ff0cc2e6c1b76ad1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:55:35', '2023-05-16 12:55:35', '2023-05-16 15:55:35'),
+('1d5cfed76f5796fc5d3918febb3f41d77edab0d8300f7cdea66d9d1bad4eaac184c87440af8373ec', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:36:05', '2023-06-01 11:36:05', '2023-06-01 14:36:05'),
+('1dcb51c589437cbdc943da49c9c36ffb704258b9baec0b645f5c077fff853d5df16d668e68a25a1a', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 12:28:41', '2023-05-25 12:28:41', '2023-05-25 15:28:41'),
+('1e71f24e167ed984a18043c20a192ff9210cd1826544a004401698753444710467a45fc701cdd922', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 09:58:32', '2023-05-17 09:58:32', '2023-05-17 12:58:32'),
+('1e769a33f6f5a5a2c0c8cbce751b97a9271bf83dcd16ef3b678c6e45de7d2155fb46b9f93d1e7ebc', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 09:38:05', '2023-05-28 09:38:05', '2023-05-28 12:38:05'),
+('1f8b334121f63ca42de3ad1b5993424742a72bc59d3e98839ea513faef7b4beebf0addd3a53111ca', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 10:16:12', '2023-06-05 10:16:13', '2023-06-05 13:16:12'),
+('1fc62dec4d4e2b5e878bb3554ee996fdf281e377625a073c40a08c42db621c4b75c075d94f6bdb4a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 07:17:58', '2023-05-30 07:17:58', '2023-05-30 10:17:58'),
+('1fe8b0cb89402326aa838a0d251e45b3728e410f6ba9c5d8cf242a7f8db271e49789acc2fb3b6a69', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:02:05', '2023-05-27 07:02:05', '2023-05-27 10:02:05'),
+('2092e075e89027a63a1974e8e4c2f3435dab449eadae60e80ac8d1d2927a9c7a0e94cdd169f0eb21', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 12:26:48', '2023-05-25 12:26:48', '2023-05-25 15:26:48'),
+('20c507f9d151c9ab8fa94e764f4abb0f9144ca1fb88433cf6e50ec0f66c199b66c4257fb5c11c845', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 04:43:49', '2023-06-01 04:43:49', '2023-06-01 07:43:49'),
+('20c76939228a7ac7baf83e519e97cdde63bb029fc82a2628730fa5b1b00558f02c2142cff0315569', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 06:23:09', '2023-06-02 06:23:09', '2023-06-02 09:23:09'),
+('216d01c29c65bd4b947b10af76903a2b42627f0299c1f03cc72877bd9a80ee340ef7f85f54426218', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 04:21:49', '2023-06-05 04:21:49', '2023-06-05 07:21:49'),
+('21a1e17c46f5c5c70db22fda8f5f0e4f32d5efcabcb3d49551f9459a7cdc887a6f0392c7e7f0b986', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:08:11', '2023-05-16 08:08:11', '2023-05-16 11:08:11'),
+('22f3fa0e58935acb4d31572e321a96ce78c270c8000a71a133f14808c27f185e335846a3041b7b62', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 10:18:45', '2023-05-27 10:18:45', '2023-05-27 13:18:45'),
+('2332147ba2d0a87fdde58c1017b9c02a760872ece45f09dfe97b561cf24312a687b3b4bd03f8aeb9', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:58:05', '2023-05-30 12:58:05', '2023-05-30 15:58:05'),
+('2506617ca487999e1119a8ff253ee4c4182fe3212a502559ccfc95c7ba8ff658e00e89fb54e2d2ec', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:53:52', '2023-05-27 07:53:52', '2023-05-27 10:53:52'),
+('25a48b7b25e3095b529c2726ff7014d662a81342080de0c9722cfb62f0e099caefe02210c142ceb5', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 10:38:27', '2023-05-31 10:38:27', '2023-05-31 13:38:27'),
+('25ccc9abc796578cea699b99eeda6be49f5ee251741c7003d372df305570cad4d1b985c89f79920d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:02:46', '2023-05-17 10:02:46', '2023-05-17 13:02:46'),
+('25d544a5b2e64ef58e8dc7445e97ed11a7534d8cd8181ec2e59d81c082179db074de078d72acd5f3', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:42:27', '2023-05-16 06:42:27', '2023-05-16 09:42:27'),
+('25e68b0e25ff1153446df9295c0ab79de57f1e898bb4f9e3c9cdf858142dd7203187548f19916075', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:59:16', '2023-05-16 12:59:16', '2023-05-16 15:59:16'),
+('2650efe461f8dd6d34d269f9bae632cc3008dbc3aa45fac2da4c574cced3939622968d272d6b0509', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 10:33:18', '2023-05-31 10:33:18', '2023-05-31 13:33:18'),
+('26e97daf0189ac36b45c4e88eb554c913e6c714f7e4e4dd78fbd2d2d957af85780f1534c1e4ba46c', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 05:05:06', '2023-05-31 05:05:06', '2023-05-31 08:05:06'),
+('273bc01938797221a39aea7da22fc406662f96d70be4b2cf798d17c029b33a275addec4959e9887d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 08:01:42', '2023-05-27 08:01:42', '2023-05-27 11:01:42'),
+('282919f3f03afc494984e9be6d2c45c4e801485f88fc267b330df61227a00ca1a3e1548d947ac865', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 05:54:21', '2023-05-18 05:54:21', '2023-05-18 08:54:21'),
+('28ab86efabf5e79f1f1f95d43bb255059ad09f2b0fd235ddc621ab3201bb49e4c16496a0f52c3feb', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 09:48:49', '2023-05-31 09:48:49', '2023-05-31 12:48:49'),
+('29099104925a7f304d06c63be032be5409977e45a317e66b0c8c8d0a6b968f1181ead0f858343d52', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 13:02:59', '2023-05-30 13:02:59', '2023-05-30 16:02:59'),
+('295bd8106c3c78b5af165154830045efcb2a56ba3396ee9c5454ef6b04a326b47e036211e085f631', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:02:33', '2023-06-01 12:02:33', '2023-06-01 15:02:33'),
+('2b1fb02c9d4296da66516861494636245ec468f62b8249cb37112fb45b85040c3d045d860d0b8a29', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:34:26', '2023-05-30 12:34:26', '2023-05-30 15:34:26'),
+('2c2c3b00e28f5ae29a49527febf3a0e8c691b07d9cbb90402ebf0e1da7976a8f1ac2728174f32b99', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-26 00:56:23', '2023-05-26 00:56:24', '2023-05-26 03:56:23'),
+('2cae06d7483234a4b4fbdb157c5bc838e06979774851a4b6bc511b20e50a519d8dc9f8ffb6ad132a', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:33:55', '2023-05-16 08:33:55', '2023-05-16 11:33:55'),
+('2edc515e845d464c030a007ceed808eedb9affee8561d4798416f092117138fb954ddc2ab3ec730d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 06:21:24', '2023-06-02 06:21:24', '2023-06-02 09:21:24'),
+('2fe3eb28ee07a0b7c1e82a88003be51fef3868c6448b280c97c0cded32631df5b90b4fea5c4ed680', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 18:22:24', '2023-05-28 18:22:24', '2023-05-28 21:22:24'),
+('303261418adeae4b1028113d7765db32650335ad1b8f951ba53800609a5f250c6b3c45f4e63fcf36', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:29:17', '2023-05-17 10:29:17', '2023-05-17 13:29:17'),
+('30f4f040fba60e1e174dd86436ffefbac7ce4af6c92c0f20cafc8d3a238441117fbff98cf23a83ff', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 10:20:15', '2023-06-02 10:20:15', '2023-06-02 13:20:15'),
+('318405644e470be9fba54262ff4997e43167b4ef984764746bfb763f7ef986957dccdd596fb25bff', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:16:49', '2023-06-01 12:16:49', '2023-06-01 15:16:49'),
+('3372bae49103e1648e800c187a631bb620acbfa1f1cabdb585344ac505da4f23f0b630a2e858b7fe', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 06:44:44', '2023-05-18 06:44:44', '2023-05-18 09:44:44'),
+('33a265eb42c372d5778f4bed773835cd1e89b4936e58360363a4d93d05795667e8c2a7db5f38d1c8', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:19:05', '2023-06-01 12:19:05', '2023-06-01 15:19:05'),
+('34e2f765e727171088eb0272c5ee236b6a9707e09d0bdf05b4639024bfc0ae0e5c3c8f3aae0c04d7', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 15:57:41', '2023-05-18 15:57:42', '2023-05-18 18:57:41'),
+('3513b2e276c4586a126bc013cd882e7ebabfd6860839e4d742add8f67fa7f57fc8e6ee649adbab22', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 21:16:19', '2023-05-20 21:16:19', '2023-05-21 00:16:19'),
+('354b8690509e5692569d997015fa95f65cd3d8e29739b91c4926ac2578fbff7c3f819e1e198898e2', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:07:19', '2023-05-17 10:07:19', '2023-05-17 13:07:19'),
+('360d74745c78533e720129182e1fc91b76ecccb2e7e914ea8858e0467f3fd1456cec44a735a7bf32', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 12:09:53', '2023-05-25 12:09:54', '2023-05-25 15:09:53'),
+('36a374fee31f67ddcb15f1f48af0ed131c70d926352574ec24c94a386d0f8c88cd1d6bfac3a34c14', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:22:19', '2023-05-16 12:22:19', '2023-05-16 15:22:19'),
+('36f06a9deb7a8446035e0e51c7638061ca5e1025ddd6af525b29bbd77266ed8b4d091379e25819ff', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 04:38:05', '2023-05-22 04:38:05', '2023-05-22 07:38:05'),
+('36f2e34ca08fbc0674a04b2c18ac20f7aa2228474e2d4525225ba69b14749b4756ac4fd5e101d0af', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:29:47', '2023-05-16 11:29:47', '2023-05-16 14:29:47'),
+('37137f0a13215b927528293ae34ade818be63cc40f54876ca69987faa4a6b5c3796ff318f5e73631', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:54:37', '2023-06-01 11:54:37', '2023-06-01 14:54:37'),
+('38dab14f5cc8a022f87d6e985356aab97d1b190eaed0e3adcbbe526945c7f36fb99e521bf9755b13', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:08:44', '2023-06-01 12:08:44', '2023-06-01 15:08:44'),
+('38f67d7fb7fc256e05893f91859eb0bad2e5b4ddc435755d1e7394533e034407c92c22e3ccc73086', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:44:07', '2023-05-16 06:44:07', '2023-05-16 09:44:07'),
+('399a568a5b1608ec980269c86ea8c2f7e990dcf98e5ad9e39576cfc60daff92a921a3e9f7c96209c', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 09:37:14', '2023-05-31 09:37:14', '2023-05-31 12:37:14'),
+('3a68b182740c9a22110de71042497525434ca8f73cd702da599260316db1ae903321d60c7cdc299f', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:38:21', '2023-05-16 10:38:21', '2023-05-16 13:38:21'),
+('3a7c143c110b58214191d9bcc4409ee2e644cfa9008d735ce2f8f640de670dbb7ac5431735b7ec82', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 06:42:05', '2023-05-20 06:42:05', '2023-05-20 09:42:05'),
+('3b3a02979c1e33b42734514d339e7b3d9441b806218a294edc48a82d7989211d9a1dbc3537ad345e', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 06:54:55', '2023-05-27 06:54:56', '2023-05-27 09:54:55'),
+('3cce278cf254c06eb40595679f6860d6ff7e89bfc1603b7fc01bbcc5d263cd6167d58f064061dcd9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 17:11:40', '2023-06-06 17:11:40', '2023-06-06 20:11:40'),
+('3cd1dfc849061bd0b9664ba0a6ba7156385d147cba030e09ce5d2c6af14fa2373a40ed20f914eaa1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-24 16:52:00', '2023-05-24 16:52:00', '2023-05-24 19:52:00'),
+('3e8af041dffc010d955ef9ecca03f1bf488b170e9c88551d035c72171bbf2e96c2760e3243f821d0', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 09:32:51', '2023-05-29 09:32:52', '2023-05-29 12:32:51'),
+('3eac56cf4d49a20a2ff55356cb78570f2aad3b088ef061a52ace6f536196c614f6fa8b916dc92f29', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 17:45:51', '2023-05-30 17:45:51', '2023-05-30 20:45:51'),
+('40a2fea65a79550a2bccb18f489ee05d2cd613862efcbb361a298847f01416a730f0fa348350eb90', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:43:14', '2023-06-01 11:43:14', '2023-06-01 14:43:14'),
+('40be08883fe72a14201345916ac50e9e27851b00a16ad5c48cfb33ef6cffb5b9228b81c1cae9201d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 08:01:06', '2023-05-17 08:01:06', '2023-05-17 11:01:06'),
+('40c890c6059cfa5b916b88536dc14c97b330776ddd43889a8243c6ddba0d9541d1d7f6bc6754180f', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 06:33:56', '2023-05-22 06:33:56', '2023-05-22 09:33:56'),
+('4107393ac038dbc3ff72481e9f5da70a72f27b1ab356b913669c5dc062768f36c0379e5ce6bf578a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 17:49:15', '2023-05-30 17:49:15', '2023-05-30 20:49:15'),
+('413b8b4cababb839d1d3e3e0d0be2b9426a31e7ce16902c716c61d4d35d55cbbece4a30e0a839ff7', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:49:02', '2023-05-25 14:49:02', '2023-05-25 17:49:02'),
+('41cfa7f70c1ee11d8a197d8ac680e2659df7d8f9073c46d79b37ec93526eda3116e7d9a489dbcedd', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:39:20', '2023-05-30 12:39:20', '2023-05-30 15:39:20'),
+('41f4044b3f6a74ef22a107efd1f4b3f18e706a20789ae0b4cf9f03d2e8b9b47a388346c68ef5f94d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 12:34:14', '2023-06-05 12:34:14', '2023-06-05 15:34:14'),
+('438264677c8378814990c527ae4d73d244cd096b86cba0fb6dcdc34516504421728b5c3a1fe39b2a', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 04:58:13', '2023-05-19 04:58:13', '2023-05-19 07:58:13'),
+('440f500b31470d7f7ec5d28667e122df8745b3e4c7189f941de3661b2e10f984db41603c2d92102d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 09:54:57', '2023-05-17 09:54:57', '2023-05-17 12:54:57'),
+('450fcf5cf45fddefb18f3581aaf91ee0bb40356fef62badfd5622a4addb05112fbd76229960d3d87', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 07:51:59', '2023-06-02 07:51:59', '2023-06-02 10:51:59'),
+('461c3687de436e3c323e5552e785f0233f6eb1f104ec2dcc196376109370433c5ab90909f3e3a5b0', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 09:50:05', '2023-05-27 09:50:05', '2023-05-27 12:50:05'),
+('46675d5ed53b52b41c4b2383c390b7fbd22f6c8b4117c654e702658f625d13ec70486ba234cce3ff', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 05:31:05', '2023-05-22 05:31:05', '2023-05-22 08:31:05'),
+('46f1eb72d3a76feb32520b45858662928d912e9b4939e4010997d95f95a746381e1a6e71fffd0ab5', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:14:51', '2023-05-17 07:14:51', '2023-05-17 10:14:51'),
+('48197d8e96e4761caaddcb26e80e235172d5229968b47ca7183cff0dad962047c9c2b2e62db3830b', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 20:05:08', '2023-05-20 20:05:08', '2023-05-20 23:05:08'),
+('486d516d9ebba6bf227d483168ab9c7a9ceaa466b824b7735f1f8eed6591010d85a7a28aecf21f62', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 07:58:47', '2023-05-31 07:58:47', '2023-05-31 10:58:47'),
+('48d124da48a8af967e346136f9d8c0368db5dc6bcf797f3babe708b8f7bf939b949f875b78fc0990', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 09:34:35', '2023-05-23 09:34:35', '2023-05-23 12:34:35'),
+('490179fb61118d13dc379fb77ffcab416cef3035ae692e250b405952da1ae409bcb0dd8991d57eff', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:24:37', '2023-05-16 06:24:37', '2023-05-16 09:24:37'),
+('4910f45d7124c72b5f5536a9bc44feff6723e7ba1d40b5b0dea388fc625525de62a52d322f97450f', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 06:21:23', '2023-05-31 06:21:23', '2023-05-31 09:21:23'),
+('49c16a23f8f225bb0da74c3c70cc0123a9cd5a6bea6add0a7a24d59989c5b292473211a7846c5827', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 04:23:42', '2023-05-29 04:23:42', '2023-05-29 07:23:42'),
+('49f20e0c5a7447ad4a01ca39c6ecfb99198d54703a149fc18355fcb1e16911c8a9019caf049b9012', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:18:47', '2023-05-16 06:18:48', '2023-05-16 09:18:47'),
+('4a74bd88f010a9baeae787987394af80a7d0df65d62e28f1d48e9fdda093fab5dd90ecd5bd50d10f', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-26 05:54:21', '2023-05-26 05:54:21', '2023-05-26 08:54:21'),
+('4bc22653501d0152fdcb0ea96aec8196481834dfd9ea774a647104bbff2d84c76536ffe0a834a5a1', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 13:20:29', '2023-05-29 13:20:30', '2023-05-29 16:20:29'),
+('4c0199d88c232d6d3a486f5cd91f1af7f5010cde2caf8798450ac51266548329277263478f6fde64', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:04:04', '2023-05-25 14:04:04', '2023-05-25 17:04:04'),
+('4cdf44edd7f2cc3a1c0830398687a41e50163eeb2938361069cf6d3a472581da47313a652129e611', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:12:05', '2023-05-17 07:12:05', '2023-05-17 10:12:05'),
+('4ce88f35782e04f7d91ad7f8a67d9071d753a1ddf84043902bfb339d043f56595ed92b37c0d4dd45', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 06:05:07', '2023-06-02 06:05:07', '2023-06-02 09:05:07'),
+('4d10e2bdade8f7d163e1459b7c70e186b5092a1ab847d0fb5ee07ca4a4b7d0deff58e059097bda48', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 08:23:07', '2023-05-17 08:23:07', '2023-05-17 11:23:07'),
+('4dd8cb02db1f10c6961ce30e1e4ec86f95866e53177fa9e2fa76d1b029209cd2e92b52685e5dae27', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 04:07:11', '2023-05-29 04:07:11', '2023-05-29 07:07:11'),
+('4ec8d76b0898532b7d1c97e8d3e2fa446223ab5574715867972c228b3a38e19f092268f8a8c8f7ef', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 08:08:26', '2023-05-27 08:08:26', '2023-05-27 11:08:26'),
+('4fabd13c77ed25134846f808704ee30d3b839628389e7be37337e1f94f97169c3934c1b07734e3a0', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 11:17:48', '2023-06-05 11:17:48', '2023-06-05 14:17:48'),
+('5186aa0a4e3badd88e2278efdb618f7b9dd714010952d6555d63a2552f4bfa9cac7cdb1e65064c29', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 16:42:24', '2023-05-28 16:42:24', '2023-05-28 19:42:24'),
+('51b1cf789cc363b3158099c809ae06def43b25d0b601bfc5802ff0d783d670974d5a7267e14166b2', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 12:22:51', '2023-05-25 12:22:51', '2023-05-25 15:22:51'),
+('51f79aaa7a9c791f5e476a5eb5ab64b852c9356703439a4f0d0eac7787f620f389ce5a4de546b688', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:00:50', '2023-06-01 11:00:50', '2023-06-01 14:00:50'),
+('521114fb15d86460a3070d84555cdc511824f99b73d09ecbe911adf3416094ebbc88b6ac278cf890', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:54:31', '2023-05-16 10:54:31', '2023-05-16 13:54:31'),
+('522ce00c7b8d1cc1443941f726fc8a080c6ed56314377955e290431eaa2c882a04aba4423c85a815', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:07:02', '2023-05-17 07:07:02', '2023-05-17 10:07:02'),
+('52904668364d0cd86e1ae47654d5c2d9b5010d7cdef26e27a299b645bd7ad5afb8a00924ef539496', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 02:27:20', '2023-05-22 02:27:20', '2023-05-22 05:27:20'),
+('52e890589daca365a04850aae7796166a0953ada17d0c890ab1afbbb8d447772ec30ebdfc02a68d9', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:20:14', '2023-05-18 07:20:14', '2023-05-18 10:20:14'),
+('533681ace8c1e44fbe7bd4c47517fac1b96d0d715055cb77401b90c042aa27d7ad9f7ddb5c7cc64c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 05:07:23', '2023-05-20 05:07:23', '2023-05-20 08:07:23'),
+('5360e29d11cce8906b1b83d86df56965810dc039d077dcb937e873f4791c5b70f0cecea73d87e1ad', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-07 10:26:30', '2023-06-07 10:26:30', '2023-06-07 13:26:30'),
+('55a558e4037425769a6a0a3d45eb6414685f49e8b1139b21acb8ea08066af94d19f1821a5b56188f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-24 08:09:20', '2023-05-24 08:09:20', '2023-05-24 11:09:20'),
+('56c82f4dbbc0037e025f889bcc16cc52af934e23f6bae3164540643c4e25c4bbe081b3e139524714', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 05:11:47', '2023-05-20 05:11:47', '2023-05-20 08:11:47'),
+('56fcc51eeed95ff4bb1ed2b9dfd9183ff10a29db768df539b79efb0976b8de76cd788f9d716d08ba', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:42:21', '2023-06-01 11:42:21', '2023-06-01 14:42:21'),
+('57209f9c94f02ac96c20808cf63589f6a856e964b20326b27119d89f156f1b89b0ca68d7d2c30aa9', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:10:46', '2023-05-16 12:10:46', '2023-05-16 15:10:46'),
+('57e1499f8af4f71e6121602e84f8746470c5019b012afbc39c51323806e3c8051098e3e4a1397372', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:32:24', '2023-05-16 10:32:24', '2023-05-16 13:32:24'),
+('58fae91b4f5de2f0029b7accf9699a863b7f6e00e95670ace4af47371ea939c6d6dc670376a652a1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:39:52', '2023-05-16 11:39:52', '2023-05-16 14:39:52'),
+('5944d770101d1d5266248477e883eb1c5e7452b4e47e27314972cc96937e950008009ccf7f33f8e4', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 00:04:40', '2023-06-02 00:04:40', '2023-06-02 03:04:40'),
+('5a57add1666b6cb9fec222d75660cd5e8cc33fdefa77c0cd75e08175b93047d23985893d9bbc4a77', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-21 08:21:08', '2023-05-21 08:21:08', '2023-05-21 11:21:08'),
+('5a7e026f74790091aeaffa00181a6a2d477fd90f0a3713c708dbed54bb8dd48c71310612b8f96ccb', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 05:49:13', '2023-06-02 05:49:13', '2023-06-02 08:49:13'),
+('5c0b056583df0a2ba9ab8beaa1212f2feb721b62c96bd6ccffdfbf8adea3058a4735db417f55970a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 07:45:24', '2023-05-30 07:45:24', '2023-05-30 10:45:24'),
+('5c82a0ead75c66eb716228f13b3d430694617eca752cfe8d17ff77cadf565ca02e0cdbb46a22c494', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:15:33', '2023-05-18 07:15:33', '2023-05-18 10:15:33'),
+('5db7c45c8de7555382276cef576b63aabe1dde92d3b1aee227ef3319d59be38c2883895cd1f0b6e2', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-07 04:12:47', '2023-06-07 04:12:48', '2023-06-07 07:12:47'),
+('5e5762f82ed1d9b8cfdd9d6538418960ad97d6ba6cc170e1f2fd25cc0ec0c47bd52fe8f43dc97550', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 11:58:34', '2023-05-31 11:58:35', '2023-05-31 14:58:34'),
+('5eb65de71df824a31b58f737cc0d743ef06247b128b3454125acae71cec4112b5f89b5f44554e7f3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 05:57:20', '2023-05-19 05:57:20', '2023-05-19 08:57:20'),
+('5ebdd4c94f8c69087a289ae62c7028105df465ecef4b2fa95eb4d1e4a1bdd03c042b862d212958a9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 09:47:17', '2023-06-01 09:47:17', '2023-06-01 12:47:17'),
+('5f8462d79395785472a1d55a0bedada445b0a5f555bbad0a21f618ba3c82a8d5c810ab2b07bcd1c2', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 11:06:55', '2023-05-31 11:06:55', '2023-05-31 14:06:55'),
+('5fd8128fef845b910e708a7cf9e74a7b4f7be321b35adaed52eb0838ae61f1cb30b64a987c4dcc00', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:48:19', '2023-05-16 10:48:19', '2023-05-16 13:48:19'),
+('5fd8aa6f8356e7bed1ff89fc864edad686ed11d9ae46e6bb9b329b5923029de50ab621015b40b376', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:05:05', '2023-05-16 08:05:05', '2023-05-16 11:05:05'),
+('615b3b9ddf54f3bcfe321c0b324e8e786fcce4faf6e1df61a893d68616c4e28985a09e5698c82608', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:14:42', '2023-06-01 17:14:42', '2023-06-01 20:14:42'),
+('616e07376969e539da39517f0cf6400c0bc25056da5774f8278d2f2f36f059cb63c5766a73a7bf75', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 06:35:34', '2023-05-31 06:35:34', '2023-05-31 09:35:34'),
+('61b896c7d956037fb648d80c7de75878e234cd9e7a3f95e57ac6c8ccca826d29b506daaaa9581cb8', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:39:19', '2023-05-16 10:39:19', '2023-05-16 13:39:19'),
+('61e4f6af2d41096cdf705d6a78e336e54ca4cb37d1b047552f2773bf7bf517d2bcf32e5247e1fdcd', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 13:46:52', '2023-05-25 13:46:52', '2023-05-25 16:46:52'),
+('623ab83b5aafa3f596fc19775596a0d26e545cf5df4a32ef71aab84d587d9a87bc2d3097233e236d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:27:37', '2023-05-16 06:27:37', '2023-05-16 09:27:37'),
+('6283a4f39b63606009ff663896a756f0667e62df6ac2076cc33cb4abf46e12c23438d70b3d309512', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 07:02:10', '2023-06-05 07:02:10', '2023-06-05 10:02:10'),
+('64b0f95ef99ea5abe01446f342cbff06c8be75e238cd18d3a3754762ae4c0d8397cb738b7caea91c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 06:57:57', '2023-05-23 06:57:57', '2023-05-23 09:57:57'),
+('64e3cc5aefeb54c55d740601fd0580d4e621da2a02bf80d88018d190f7c21dee3e56197a0fc146d8', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 12:25:01', '2023-05-22 12:25:01', '2023-05-22 15:25:01'),
+('65273fdc7a392a196f5fed77707239d692b668ccf77138f45b8300f99b21a94d054efc0766a17877', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-26 04:43:35', '2023-05-26 04:43:35', '2023-05-26 07:43:35'),
+('65accbd8b531f08c418147259e819841f7d32c63a5a3f0d40a779ca6598aaab22468f98de183e23a', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 07:00:23', '2023-06-01 07:00:23', '2023-06-01 10:00:23'),
+('660f3173c4d055eb7e60b0433e22fdffed60d3a8251fb6e2ec6bbd0168a648f59e83b0669b0509f1', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 11:36:11', '2023-05-30 11:36:11', '2023-05-30 14:36:11'),
+('67751845596dfb1e15cf47a5ac4d091a979b84874a134687efea40b3b4686c5fcfaee58a554ee8d3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 11:24:54', '2023-05-25 11:24:54', '2023-05-25 14:24:54'),
+('694bdc385df14e6b5ddfd496f51e12e8c6ac8887faf024cc3249f40862188f54c7abc388490321cb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:33:47', '2023-05-16 08:33:47', '2023-05-16 11:33:47'),
+('69f384d653dd0b507118daaca43d72ee8b1af431a093e389333f0333d9a6164fe0efbe0733d2499e', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 10:42:50', '2023-06-01 10:42:50', '2023-06-01 13:42:50'),
+('6aeefa71a82509ad812fc67674ef6d2bde1e6679bc136418ccd5f1c94420ec8605d85d32d7a11395', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 15:51:38', '2023-05-25 15:51:38', '2023-05-25 18:51:38'),
+('6bf62fd7c80cd6ea00d139e78f1a0a3cb8c9ea7ca88185347f33f27e9cdf82be77d2c3977a98cf13', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 05:51:22', '2023-06-02 05:51:22', '2023-06-02 08:51:22'),
+('6c1c0cb0a75333ee04dca6364472aeaf10172097032881812f8847a9d6334ad8fde3fbc01c4b9a8f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 08:06:16', '2023-06-05 08:06:16', '2023-06-05 11:06:16'),
+('6c3fa48e8b54c6d812781691f3a87f5dbdf666b685a66cde8fa0ef69f241cd78bec45c54dee822a2', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:29:44', '2023-05-16 06:29:44', '2023-05-16 09:29:44'),
+('6ce8930f647ee4bb4b24721f453f9dd32f195255008414548ed1a0ef1cc95f3f3ca891d053509bab', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 06:54:41', '2023-05-25 06:54:41', '2023-05-25 09:54:41'),
+('6d08e71fe55d29123324fdd9b97ffe2d2541b31559575921eaecd2fe59555dfe5b6c2fa45ee5b2e9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 12:19:08', '2023-05-25 12:19:08', '2023-05-25 15:19:08'),
+('6d701ff94e02b3b49cb011181ceddc3c7162a16e63540968ced912dcbfc281ea00b9a4aabb73271a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 08:29:39', '2023-05-30 08:29:39', '2023-05-30 11:29:39'),
+('6db51df86a0cfcf3335905181a6767e7c9e9c2d524427a822d94f6ba7b411d8b3ee1e99851b0ebff', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:24:46', '2023-05-18 07:24:46', '2023-05-18 10:24:46'),
+('6e2f28047494c255e39f7bcbc42d4e0338abbadf5bb1526c17f7f2c13afec871bc0658cd34d898c3', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 10:10:36', '2023-05-30 10:10:36', '2023-05-30 13:10:36'),
+('6f4e4976bd2e321f8070f524658e15d4e0df416b207b1d432f244d4f677937354f711c7971c59d39', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:44:32', '2023-05-16 11:44:32', '2023-05-16 14:44:32'),
+('703d382d2f4acaad66865f71274974bdecfbafa70e06bf870a79f1c20c37866584a7e5d8e8aab7d2', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:16:28', '2023-06-01 17:16:28', '2023-06-01 20:16:28'),
+('71ad97901c9c1f72f36d652ebf8f74605626c1f0c859329d98508b02715ad0d09fbbdaacd8deb5e2', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 06:13:41', '2023-06-05 06:13:41', '2023-06-05 09:13:41'),
+('7212dc038e89a24099212feeb34d076061f7b2a70060522b714f0a9d63f3f4a2b4eb2c320600d1c5', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:05:04', '2023-05-16 08:05:04', '2023-05-16 11:05:04'),
+('735cecf2fcc6b860848f503f0b282fda16f2e909f005afa1ab3fcd6c215b95f783c40d90ca1585a4', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 22:11:02', '2023-05-20 22:11:02', '2023-05-21 01:11:02'),
+('735f2f7623a4245bc8dbdacb0b55c38e6e9cc5d8787bbbc42f3405d42e35266e04c2cfb9e32214a3', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 09:49:42', '2023-05-27 09:49:42', '2023-05-27 12:49:42'),
+('736b2ee71f6c1767655fca1f5322a851621f6c6221cdd720bc97169334a236abaf446288e19a1aca', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 13:03:06', '2023-05-30 13:03:06', '2023-05-30 16:03:06'),
+('73e02c357aa3dabb07390bc33a9ff85e0bbeb9096e5188caa97a6f3544135535cda1ceaa09bc2fd6', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:26:03', '2023-05-25 14:26:03', '2023-05-25 17:26:03'),
+('73ed4b74adc07970314dcb2e9382fdb760cf4cbd94bdb624d078481baf6364414febc6b104c666e8', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:36:35', '2023-06-01 11:36:35', '2023-06-01 14:36:35'),
+('7458be31dcbecc087ce80b12a3cfe5c6c543e79cc2f3fabe18fcbe0ba375790e7233b7b086e2c0a3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 06:10:09', '2023-05-23 06:10:09', '2023-05-23 09:10:09'),
+('749e2c3b45e2c7737db3772679cea6a11ea8d5dd9954bf31d1aea2092119f2d8508b9d3c563213bf', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 04:50:40', '2023-05-25 04:50:40', '2023-05-25 07:50:40'),
+('74a8b24031021962f38be8837ede21fb036698b460f19167ee5542067df20bcd1ffcb1e90ab84c79', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:55:39', '2023-06-01 11:55:39', '2023-06-01 14:55:39'),
+('7617b92bdeca0d5b0f371a6c1b18f93dd3357b68a28cb817b758ad84c369e80eab3c10ecedb5fc30', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 03:55:19', '2023-05-19 03:55:19', '2023-05-19 06:55:19'),
+('763ecbcfd7937692b87a5dd0b547fdabfa498d2ce7d43796ab303614eb7875995329d6d3bc08b06e', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 10:23:55', '2023-05-27 10:23:55', '2023-05-27 13:23:55'),
+('77b0305f964a0227d1b4c76615047162493b376e5d1f2bd6c4c7b39a487c98768ede9b367ea13ea6', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 07:51:29', '2023-06-06 07:51:29', '2023-06-06 10:51:29'),
+('789fb3ef9992f452a7d277794a891bd41708dcc72e7499913e21057b69beae2162d441c319ddbc19', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:51:14', '2023-05-16 10:51:14', '2023-05-16 13:51:14'),
+('79711907d7be4eb5f0cee9e3af14adc409f37a1cfa38280752e8edab5b98aad013359967706f2a79', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 15:27:41', '2023-05-29 15:27:41', '2023-05-29 18:27:41'),
+('797f9f6417994136b8801aae41cdd9244130a3247f7c340bdf0f5571ac6b621519c05812dc091e4b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 23:02:51', '2023-06-01 23:02:51', '2023-06-02 02:02:51'),
+('7b2648db198222f653ab9ca395fc07265238e2679b1debf5bdaa7f7e035b794cffdeee23a572a68c', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 10:11:01', '2023-05-27 10:11:01', '2023-05-27 13:11:01'),
+('7c329dddb0c51b6993404d6f67e022dfffb93b68b9ab0b3bcdbabde0713a41a610b0cdc493894498', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:05:18', '2023-06-01 17:05:18', '2023-06-01 20:05:18'),
+('7d94cfdb6b6a4e5303f4addaa9d2ed302b007b111322d0f9261a0a9fe216a0b18cfcebc021b36e8c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 16:10:05', '2023-06-06 16:10:05', '2023-06-06 19:10:05'),
+('7e1b91c9dfd61542729d70236628aba0f20cbea3d8bd0fa2fcc9782a23dbdf91a097b0867681cd47', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 04:57:03', '2023-05-20 04:57:04', '2023-05-20 07:57:03'),
+('7e7435c9fa2204b9e54603838beb5e0e95f4b1e923b95b1dd451e2c57a586066f517260840fb423c', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 15:21:55', '2023-05-28 15:21:55', '2023-05-28 18:21:55'),
+('810039ecba6d9a80bc71a8d3428e9ebb2872d74ada6a978752bddc59fcc5c1198b8ed4473ba7e0de', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 16:12:06', '2023-05-29 16:12:06', '2023-05-29 19:12:06'),
+('8147c816cf58685fa4673e34ee20fe6f1f95f3a84d4f1ce771667ea2af56d62aedb9d8ff4740799e', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:18:02', '2023-05-17 06:18:02', '2023-05-17 09:18:02'),
+('81b30fc107d33cfc321efb447acaa75a5403b48c5261459cd70e1acedb537fbedb9a91bc4e7379a2', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:55:39', '2023-05-30 12:55:39', '2023-05-30 15:55:39'),
+('82214d490ca00d2d8ba5ff3a8da8753021c3819ed107087ec7118952e6df1fec33133613444fae3f', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 09:43:25', '2023-05-27 09:43:25', '2023-05-27 12:43:25'),
+('8330d36415500ab7b3e6a6a684d7bea0d43e6aeeabad4abce2143a2b7d6deb6f5fc732b7b3f7264b', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 10:12:18', '2023-05-29 10:12:18', '2023-05-29 13:12:18'),
+('834dc3bbea8edcebad11b264fe110c433e3da335c35b4cf0ec152078d07ce3e139ceb7cd64ffea5e', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-07 05:15:23', '2023-06-07 05:15:23', '2023-06-07 08:15:23'),
+('84074f23c6ff8f5364b8807c4aaf50671bb63eafdb574207850276596df69c40d0ce27c86dcd4cf6', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-07 10:27:05', '2023-06-07 10:27:05', '2023-06-07 13:27:05'),
+('8503f18f54440bb6ec8b9d76dcc01f7be87038ae459821cd9afb65e7e52ff7fcdefea3502cbeb6f9', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 11:58:14', '2023-05-19 11:58:14', '2023-05-19 14:58:14'),
+('8608f34286c3bc048033940dc20b27b72d8887a34be8a47dc552b79271ee245428d21e232fc5276b', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 11:46:40', '2023-05-23 11:46:40', '2023-05-23 14:46:40'),
+('8643b2aa60404f0ee5a29fbe1702569a1753ddf0c34445b2bed9fba9a781eeddfde921802c828f17', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 09:38:48', '2023-05-17 09:38:48', '2023-05-17 12:38:48'),
+('86518cdb7762a2e53fde4d29df0679cb6cce7b2a7cdc193413c8c3647a41f88f539875f6343f88ee', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 15:41:51', '2023-05-30 15:41:51', '2023-05-30 18:41:51'),
+('86a49d8fa00320bf3c6cd7253d239f57bba795e3dd810250f97b0b4042c2984640ec348c2ff097df', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:23:13', '2023-05-17 07:23:13', '2023-05-17 10:23:13'),
+('870b2a060311d8148e0ccd3c66022e1b0f4c11ce4dc20d6a887c0aead05b1bebff38e0f70cbbf1b6', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 22:12:10', '2023-05-20 22:12:10', '2023-05-21 01:12:10'),
+('87e8d2032cbd4553fc99ab6fdbc7e7e39cd8878e07330472e12e03aa891c43ae1d45d0a249e77018', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 06:47:27', '2023-06-06 06:47:27', '2023-06-06 09:47:27'),
+('882c3cf7e6fcee8b2c7a748230d5684470965d7aef793c08fa8c00c9ecc887ab26301784aa8ab4ac', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:00:38', '2023-05-18 07:00:38', '2023-05-18 10:00:38'),
+('8a4ecf8e313177771feb8eb726a8aae02fd6fbc7904aeae5f59290153bec2e5900f998db819f6eba', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 05:00:04', '2023-05-20 05:00:04', '2023-05-20 08:00:04'),
+('8a7f92230346d5fee3bb86571342cda7a6653aa92da50dc8270084c603d38743748b1a60a4c5f37b', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:19:12', '2023-05-17 10:19:12', '2023-05-17 13:19:12'),
+('8a96d5d8ae9c746fbed4a3cacaba8246432676f8113c770b4dab546840d47a38b69e2b1621c99f86', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 03:59:18', '2023-05-23 03:59:18', '2023-05-23 06:59:18'),
+('8b0364c55545eae08e05649d3178a51c7d83c74d0c0f0f3e8610736652005bd706cf4eb9f1581085', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-24 06:09:02', '2023-05-24 06:09:02', '2023-05-24 09:09:02'),
+('8b4ec6b3a975136c2e100076d7936177a7b2fa0551ffcb53090d22c47564687cbbf39b641420cf98', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 13:00:53', '2023-05-30 13:00:53', '2023-05-30 16:00:53'),
+('8c4f2436d9c5935908441f14540f02fb73dd0cc8056e9b52e60315507e6103ab6f663f9c9d7f2fdb', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 10:17:33', '2023-06-02 10:17:33', '2023-06-02 13:17:33'),
+('8d546fee4efa45966a3046ee1c64dc2be101fd14040d1a78e9a36ae5503cc7f3f71a6df30aa2de0a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 04:23:05', '2023-05-29 04:23:05', '2023-05-29 07:23:05'),
+('8d6b6aa038656d6b4571769845e4d4b1673235a5528ca0b5f8a2bff7cc88901752e19fac8c79b44c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:32:57', '2023-05-17 07:32:58', '2023-05-17 10:32:57'),
+('8ea6d1d3ad78829ec0ee8d9d3f6f7b1e3f6d5854970ea853c2cf72457ee9f1b3a28de272b91b8dec', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:08:30', '2023-06-01 12:08:30', '2023-06-01 15:08:30'),
+('8f1f51ac462ea5c61ab803dd1e1964f8d1905680dea32852f6e28e42c5c2c8d3250e4d5c09054329', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 10:19:06', '2023-05-27 10:19:06', '2023-05-27 13:19:06'),
+('900fedf1a2b1cddc2718998e6f589f6d1a53807fd424ba1e4f0b63d62dac151397d150cf95f77389', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:49:31', '2023-05-17 06:49:31', '2023-05-17 09:49:31'),
+('9062c12d479899aa4d715d71fcec6e9bbb381cf2f45d9e47727c6b2e6531cf1a027dda6679c95429', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 10:35:05', '2023-05-23 10:35:05', '2023-05-23 13:35:05'),
+('908973606f88237c157ba867136e9809f943f109c11d429a9466be1c6e2e66f7afa7561190b0a74a', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:32:23', '2023-05-16 10:32:23', '2023-05-16 13:32:23'),
+('90f25e9feab96891026c175eec7fc78a5cc27b3f16fb46859bc17703097af5b9904ba080cf004821', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 05:09:36', '2023-05-23 05:09:36', '2023-05-23 08:09:36'),
+('91237e4686218f36cdacc54625fd9d646797560ad06323ef43d0f149c34506da1aec9ddefc2d73e8', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 05:50:39', '2023-05-30 05:50:39', '2023-05-30 08:50:39'),
+('91252bf004a85b52e59bedb5add3f6917382af5333dacddbf31a3af878e367cf6e72ecc352fb17f3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:43:35', '2023-05-17 06:43:35', '2023-05-17 09:43:35'),
+('9269205213e5561004dc7ed2972643cc8a4a1d367de5f9e2d7eda32e11c875237baa8159ace58201', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:32:25', '2023-05-16 06:32:25', '2023-05-16 09:32:25'),
+('9394c0dc68993179967ab4eebd1d38193add7506e80cc9b4a7c888967290c212fd91ba7599e32172', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 10:59:59', '2023-05-28 10:59:59', '2023-05-28 13:59:59'),
+('93ac0f7d096a5d84e19a0e5b6ea7d125433c315a20d75f8d7a212ea4ec4a54439a024496e4d585db', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 16:57:53', '2023-05-27 16:57:53', '2023-05-27 19:57:53'),
+('94212d96714a0b58f0a917514d4f4577ed97de08ba8bbc1e1752a60bdda2d1d707f10bfc99733b9d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:19:24', '2023-05-16 06:19:24', '2023-05-16 09:19:24'),
+('9491f88139f83664b9e181a9fc280fc130d2a69ed128615676cb1ec81d2e99db17e6af6fb59e073d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 08:08:02', '2023-05-27 08:08:02', '2023-05-27 11:08:02'),
+('949687a8c5051f1e0d99f43081725a1adbd9c51b894569cf78dca1a494ef176f18d56ebf4f976800', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 06:50:37', '2023-05-18 06:50:37', '2023-05-18 09:50:37'),
+('94f47ba3b1076c427cb309c66155c7df03c5b92c176a765cdd767fa275c619868e6415bbbaa43048', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:57:27', '2023-05-27 07:57:27', '2023-05-27 10:57:27'),
+('9548689a089444a855fc9b96769838275720ac0cf1243705f074462f8533ecaf1159a850e76f70ca', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:46:29', '2023-05-17 06:46:29', '2023-05-17 09:46:29'),
+('957f13d0ab71205db7b204c0f51ed2794c59fd25bd1bce165cb9ad6d89ec615ce5af2e31fb180fba', 20933, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 11:12:24', '2023-05-31 11:12:24', '2023-05-31 14:12:24'),
+('95afbc368744658a7ecc58192311d2ebcf4f295b063a3f18a6d06e41dd0b1383bcfd8d2c9df67d38', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 12:42:43', '2023-06-05 12:42:43', '2023-06-05 15:42:43'),
+('95e48b8c2486858758a4a6a0e8ce28bfa0049380840e2b9867944a2d964771e08a1c308eb15a9e01', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:11:02', '2023-05-16 06:11:02', '2023-05-16 09:11:02'),
+('96ac812a7cee2fa90924a715ebb740db386cbc2b223df02b715d7a0cb34b5417f536634572e0a8ec', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:48:29', '2023-05-17 06:48:29', '2023-05-17 09:48:29'),
+('96d02b606ca375dd182c897a5d42f363a993f0984ed2a0f7ab5bbce83fb6df70a596f76e221310c3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 10:01:29', '2023-06-05 10:01:29', '2023-06-05 13:01:29'),
+('96fb97fa453c3c036682276265cbbb796a4a817acd3250f6d56ca50c008349c361903c2a4a5c32d3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 05:10:02', '2023-06-05 05:10:02', '2023-06-05 08:10:02'),
+('97f26268a32b9c75aa0fc6a1a852218c986cf55ce4e8f2d5bb92fd5959380682b228a1528209abf3', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 10:19:32', '2023-05-28 10:19:32', '2023-05-28 13:19:32');
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('9839434f8fdcc36be2d8718a18612ddd866d3dcff975a87059809a04be719064126b2d67d9345fb3', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:53:44', '2023-05-30 12:53:44', '2023-05-30 15:53:44'),
+('98d9b6038e5275530ba50cdf12de92a5e5e457beec84aa2a914e46b812a107ae340afd2f114fa03d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:54:45', '2023-05-17 06:54:45', '2023-05-17 09:54:45'),
+('993b3d044ec26b21654458490a876f7008e9a79536657f0368653398ef6576a3fa6989fedbff7a6d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 10:09:25', '2023-06-06 10:09:25', '2023-06-06 13:09:25'),
+('99b1757a8cb7c36147a8ef4a9e529bc52cb66aff0b7269b162f9a6394221aedfd86e99d4d7576301', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:32:30', '2023-05-17 06:32:30', '2023-05-17 09:32:30'),
+('99d1ed158a5d47a9c4b08b290613eb2c21a35e4466061f766b842d7af2ac38ca4bc0943d111ae100', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:41:30', '2023-05-16 11:41:30', '2023-05-16 14:41:30'),
+('99fb990df8407f4391679572f5532e383bf44b06ce7bc0047b3f64143ce5f35e94bd8cd23249717f', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 07:37:32', '2023-05-22 07:37:32', '2023-05-22 10:37:32'),
+('9a4064ea7092b4a431c192785ebdcde152876e629080fea8bf5ed9bca52e1d6f87382d4c23841a4e', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:35:33', '2023-05-16 11:35:33', '2023-05-16 14:35:33'),
+('9a6e5571754449ae10dff16d6344f2ffb6822a6beeb7f7d0ebf9e1c91041e0e8d44a05dadc68aa89', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:30:24', '2023-05-16 11:30:24', '2023-05-16 14:30:24'),
+('9b0fa5f199ca9a83cab2213b55577176bfccea3757ffaa962e611623e80f1851448188dc1964e857', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 16:38:57', '2023-05-25 16:38:57', '2023-05-25 19:38:57'),
+('9d05a8473adf3ef18153c6bc1902d88868f0f25f8f9c466910134034b5d059dbf1521e4e8eed0199', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:21:39', '2023-05-17 07:21:39', '2023-05-17 10:21:39'),
+('9e575e7b45d001029424658b2a1da7478913e7d20213eb15426b4516155192b7bc35b7cd12ea059b', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:01:16', '2023-05-16 11:01:16', '2023-05-16 14:01:16'),
+('a02b9bd6c06eba717eebbc82604aa57d082d1b6b27bec3c241bde52006178b504848a09da60d32b9', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 05:11:54', '2023-05-20 05:11:54', '2023-05-20 08:11:54'),
+('a0580d16157955821d8148d9d6c1cd80be7448579889a2cae2bfe1cbd463534d026126555ba44467', 12, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-26 00:59:52', '2023-05-26 00:59:52', '2023-05-26 03:59:52'),
+('a0a4e74d1c69014b40408224e2226d4bc64541e6d53ee40b22342cdfd3d8069af26d0fd9a7670329', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:04:27', '2023-06-01 12:04:27', '2023-06-01 15:04:27'),
+('a0a8293582834e29bc5364a565db0e40fb3c6046da70fdccede5d962df2febf89829e7a5da3ca037', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-21 11:30:25', '2023-05-21 11:30:25', '2023-05-21 14:30:25'),
+('a1c9e018872e1aee5bbcca3bb888bf8d0739b2912dd9a27accd8808b99c2a1112ef3d5c1e1343ccc', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 20:17:44', '2023-05-22 20:17:44', '2023-05-22 23:17:44'),
+('a31aa1928ab91adce3a9535a825f01c6f3b3fe2b02b40bad079bbe043c61cad4c8eb366db6f2156e', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 06:48:46', '2023-05-31 06:48:46', '2023-05-31 09:48:46'),
+('a51122b848860ac8182b99209eaab663f742e46b7b11d0d950c5e3a36c5e244808ec90740d1eabb0', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 18:23:09', '2023-05-28 18:23:09', '2023-05-28 21:23:09'),
+('a533e9376a795d21bb6d89c36686c37f05e5a76b94fa69eb0307d3b70c18672b3fa8b2883e47e796', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 08:29:30', '2023-05-18 08:29:30', '2023-05-18 11:29:30'),
+('a56c66b46ed008216f5511f2e9cbe0e6742416333c615ebe575fb082542a0840243a350a4712ae43', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 04:07:03', '2023-06-05 04:07:03', '2023-06-05 07:07:03'),
+('a5799405b416a86bd874c7568d58f941e04519705503d5f7e07348ec8c496b4b672cb66266a93c3e', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:46:16', '2023-05-16 10:46:16', '2023-05-16 13:46:16'),
+('a5ab41c2795db6b4566bddc2bd8ca85041064faf2333893b0fe18eb51d4788e7b9bbfb469beae9c8', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:48:03', '2023-05-25 14:48:03', '2023-05-25 17:48:03'),
+('a6ccf827b7c30e4f3ed2349d20504b2428c5da752823a8a8088cba007eefab1c6e4f6bc757fc95b2', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:05:02', '2023-06-01 11:05:02', '2023-06-01 14:05:02'),
+('a72eb7ad9df773d3ddc44ddb114e6a913afa70610a294efcde26b51ecf1a6eb9193a8bbc3a0e4b23', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 08:14:43', '2023-06-01 08:14:43', '2023-06-01 11:14:43'),
+('a7a787ef3b2737ed4ae60776851a14c5934aecdfe4034a9c217682518ca0d3cad5ca9f81f7f80ada', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 18:22:47', '2023-05-28 18:22:47', '2023-05-28 21:22:47'),
+('a7d5b697a1a945292344ffb5e683ff6d1c434c573f517bfa18988dada82ec5eb60f9c7495bd84694', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:25:20', '2023-05-17 07:25:20', '2023-05-17 10:25:20'),
+('a9be669ea633edf80747cb19286ce78fa1e9c5e618e0981c0612e3e95a4bb0cf108c3a4ee5a3691b', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 06:59:02', '2023-05-28 06:59:02', '2023-05-28 09:59:02'),
+('aa5c8f86f666023bca367296e8960e07335ebcf0324c0d875952b9903bf8ce27a55b4e68649258ac', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 05:11:52', '2023-05-20 05:11:52', '2023-05-20 08:11:52'),
+('aafe6decdeba8832015d7db931ed4586578480ffe3cd278fd32be5410e640002a7c4e65a112bf4c1', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-07 07:34:44', '2023-06-07 07:34:44', '2023-06-07 10:34:44'),
+('abc84023102dbad60f2b295a78be9b7147b2553cc307809e67f9c8ec086788e405d4171148f7c9c2', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:56:43', '2023-05-16 06:56:43', '2023-05-16 09:56:43'),
+('ad7a6bf113377ead585f8baf525d295fa99c872e63f09b8c6492b9236ff0998adafc84f335a4b257', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:45:27', '2023-05-18 07:45:27', '2023-05-18 10:45:27'),
+('adcdd4593bdaee89791f379fcb34213740cabe535f2e37febaf0d0db902fe7792a80f723cc7ea87e', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-21 03:39:11', '2023-05-21 03:39:12', '2023-05-21 06:39:11'),
+('adfcce0b564b7609a7cb5efa848762f4820fb18290a02dda48920c59fe0bf21ea5691cc0c169634a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 08:05:29', '2023-05-27 08:05:29', '2023-05-27 11:05:29'),
+('ae331a549b9af57cf4816b768718a9b0aaed3b2f60c922bb5028cef0543dd1776a950ba9cfe6dc8e', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 12:01:33', '2023-05-25 12:01:33', '2023-05-25 15:01:33'),
+('af6d639b5c86b622259dabcd4199da0c4c5c0583e34d9659674bf707205d0e4c7f94f421ec4200a1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:07:55', '2023-05-17 07:07:55', '2023-05-17 10:07:55'),
+('b047cb7fbf8cffde8d1817aa983a0b35ddcba1b0774960f342307b3f4fb036c08729a77c060eaa79', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 10:22:29', '2023-05-30 10:22:30', '2023-05-30 13:22:29'),
+('b061803cbd89a1f3716de22fbf36a57fa223a2ae5369edbd95e6175476c19fd00ebf283af86794e1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 20:10:08', '2023-05-20 20:10:08', '2023-05-20 23:10:08'),
+('b09e5665b3348c47eaef14f898939313a5fbbb571c7608bc0bc21a958b3de5026887422cc8b433fd', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 07:34:23', '2023-05-30 07:34:23', '2023-05-30 10:34:23'),
+('b0d62b84f778b5ab50f31ee4ae97829e4d1031521e850837f6c4705b3a10b03a8ed90e46ab71f0df', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:37:29', '2023-05-16 10:37:29', '2023-05-16 13:37:29'),
+('b176c9ef43c72a0c66ac23a9178923d3fe88c4d8cacef7a24e7e0d02f50240598e1a5ebc35caad44', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-24 07:08:25', '2023-05-24 07:08:25', '2023-05-24 10:08:25'),
+('b17cc5aa6530300cb66c4ac83f64a53e08705faec911f55b872414ab308f8dd3cf64a8295b7815f7', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 12:18:51', '2023-05-29 12:18:51', '2023-05-29 15:18:51'),
+('b2b185d772aa181c83250c76cfab41c08102df850a8bd8de93908e095dcc2c356159d03fc0eb408c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:54:12', '2023-05-16 11:54:12', '2023-05-16 14:54:12'),
+('b2f16ed0bf3b281aaaa26408954e6675bfb9f3361cf912f5008d34ea867450d3b488d260e707ab9d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:38:16', '2023-05-25 14:38:16', '2023-05-25 17:38:16'),
+('b38827add5a23274a08dae8d6d7976173f9a5961c47e614c1a3212e4cbb55e81a7b6e0b941cc8994', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 05:17:01', '2023-05-17 05:17:01', '2023-05-17 08:17:01'),
+('b4aefc1b6e022fdd5fe65751f9cf1ba829e4a9a108cacd18784d0e9f51479bd737a93019a0ca9d1b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:15:42', '2023-06-01 12:15:43', '2023-06-01 15:15:42'),
+('b5533ba1501b31623fe892fbc59ea6f8b8a8cf6ef5f34b9789d5fdefbb5e1c9bc7a3f5776c797b1a', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:20:55', '2023-05-17 10:20:55', '2023-05-17 13:20:55'),
+('b61cd62424e0a318cdfc6830d6c41e1121857d1dbb10687f627dcf852a636617689d4d67fccbf283', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-21 10:26:35', '2023-05-21 10:26:35', '2023-05-21 13:26:35'),
+('b65543937b2b234654f76925d1921e509e48b9611b3bbffde3a2a4537fbdfcd5fb714df2bfc9e931', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:39:45', '2023-05-25 14:39:45', '2023-05-25 17:39:45'),
+('b6bcbfdac9165e70a08719aff76dda266bac778b0954c869c8ed9a267b64a2cfcd7a4d39a0fbac17', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 06:42:07', '2023-05-20 06:42:07', '2023-05-20 09:42:07'),
+('b7ac894c18deeb8b366e66b9187a489838a773a98f3be677675b5d446114834488cbab30e04c1dea', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:38:29', '2023-05-16 11:38:29', '2023-05-16 14:38:29'),
+('b7c2e064d76fb161dcda44029df97e5d33370971871de1f04b7b17dbd79243a2c759bd25196b3490', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:08:20', '2023-05-17 06:08:20', '2023-05-17 09:08:20'),
+('b810bcb98a93b7bba4bbe5d836086f46333ccb7b9c24b2e7ba508e443e4348313751ef15db1fc333', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 10:39:48', '2023-05-31 10:39:48', '2023-05-31 13:39:48'),
+('b8b1d8a1391a7fda681e506c7cd9a5c0fbbcb4643b8f2efab56ebff25975e7df79cbcfc34446da74', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:52:46', '2023-05-16 10:52:46', '2023-05-16 13:52:46'),
+('ba11dd4c66e0875ddd27ac76790bd7422949fa44a2c6f590ac3327d289aa2341c3433c5b7032534e', 20933, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 11:25:13', '2023-05-31 11:25:13', '2023-05-31 14:25:13'),
+('bad4011d4c8321b5c763e338250b22c26a27593e38107854f64f89b5fc262d5d34ae11c6cf429bfc', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 09:46:00', '2023-05-27 09:46:00', '2023-05-27 12:46:00'),
+('baeed1b82cd4404d9c5a36372d339262a9027c1138908b1005721ccde2c72c0353ddab7a3ee27bd3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:32:28', '2023-05-17 10:32:28', '2023-05-17 13:32:28'),
+('bb3f2b5e4a3a9266d9caaf1f87eb1cce1b40c2bbbc113e29de55c8ec4d37b93b6edcd3bd46bcba2c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:19:53', '2023-05-17 06:19:53', '2023-05-17 09:19:53'),
+('bb4fc9504a81605e6a1972d73ebd631eb9a3f67a7a256044082ccf3fc1e25a1c3d070a00a13e50e1', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:09:58', '2023-06-01 12:09:58', '2023-06-01 15:09:58'),
+('bca897e65631db842ee74ab5079a5ed043adccb5c8d295a903798193ca303493bab93968e3196922', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 20:10:56', '2023-05-20 20:10:56', '2023-05-20 23:10:56'),
+('bcb39cd641e9350503630e4e14dff157aeddf4d0ab863bf6133781b36ffe371e033518db8d88678c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 02:32:33', '2023-05-22 02:32:33', '2023-05-22 05:32:33'),
+('bcb9813dff11a0bb77e7979c5dd2971a32ea81c5f540edea2ebe0fc9d0d2a3701f368382e16ea736', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 08:00:42', '2023-05-25 08:00:42', '2023-05-25 11:00:42'),
+('bce9c7adc292b55a7c7a57856069028c0037bf43b0792d7484679604745c2e90c6b75aebaf825150', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:49:41', '2023-05-16 10:49:41', '2023-05-16 13:49:41'),
+('bd5e008cad28869e75cebab63cb79028231da44ca2542e63e6cb957e7b83dfc51d9a47f39b9fabed', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 03:58:51', '2023-05-19 03:58:51', '2023-05-19 06:58:51'),
+('bd980f8234d50a9155a87bbe44428bc8efca0f13e2bf47a5f407dab1dbfd23b94739a0db91b822ec', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:54:01', '2023-05-27 07:54:01', '2023-05-27 10:54:01'),
+('bddd1329fa7c94a6c7aefe94e2efedfa94b159a2162669534abf735b039e49481bbcbc9f0a299658', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:37:48', '2023-06-01 11:37:49', '2023-06-01 14:37:48'),
+('bde430c3f5e99448d535984bfc58ec4a9b2aa57de88d75fb35016835d310b37647b3f4d999c4f698', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:30:22', '2023-05-25 14:30:22', '2023-05-25 17:30:22'),
+('be6f5e02684627b2ee7a7accaa30506cd94723c2ba25fe17fd1ee2ce5204815ff686d4972dd7c892', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:15:09', '2023-05-18 07:15:09', '2023-05-18 10:15:09'),
+('bee9717a1760748c43498d95c15e1fedb4338233e86dd2a81da2a12755e7a1a60d86ba4292f9c783', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:33:25', '2023-05-16 11:33:25', '2023-05-16 14:33:25'),
+('c0a05d1225121cc4bc40f9cddc0e5327638fcb81bf0e4a55a2931a4d8de1549a90ff55b39e8b655b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:18:03', '2023-06-01 12:18:03', '2023-06-01 15:18:03'),
+('c12712ee7e8b796a33546e1927e0b0928ad4aa56632d2b6fc4a28dba99f5cdb706f1ebb0a8b8175c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:40:07', '2023-05-18 07:40:07', '2023-05-18 10:40:07'),
+('c13331113ee8a4cb4bfe4c82578d46169adf6fc1ef6b337eb67f8d88c54a87f10948c70efb9eb457', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 10:39:25', '2023-05-17 10:39:25', '2023-05-17 13:39:25'),
+('c218521d9f514ce2c90baed41316852446f9608ee1fb58f30c50449af8de115d04624cb6569d3980', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 06:13:54', '2023-05-31 06:13:54', '2023-05-31 09:13:54'),
+('c44cd1071e9210ad16bed8929d13ddbee0defc5bef5c06c362dc1973f5179dcbe3ed837b9b4abb6d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:49:42', '2023-05-16 10:49:42', '2023-05-16 13:49:42'),
+('c461f4003983ef65000da87f2767a7693e04c18fb286d05eb5e15e756f00b9e7bac006bf1c2eeb59', 11, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 13:50:09', '2023-05-25 13:50:09', '2023-05-25 16:50:09'),
+('c46704c603f215dff461dfb718653cabb0d95475302b69a6b8448f05eb7b1ae0b64a83aaddaa112e', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 05:11:17', '2023-06-05 05:11:17', '2023-06-05 08:11:17'),
+('c4d6993c8031efcf0264b259d9001119e88c89a533e29f9c6813b2cbb7b20fe39de694b16b95ffcb', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:35:18', '2023-05-18 07:35:18', '2023-05-18 10:35:18'),
+('c52fe985adaa7f9b9424778f25acbd329d6b92d62434eb27dd8808c81322b2e0da835b71a974118a', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 05:54:01', '2023-05-25 05:54:01', '2023-05-25 08:54:01'),
+('c62a3a4cff557d48747311abf822399c60af216c6ed334665f2ee9a6e4623a4ec5ef04250df76bb2', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:55:04', '2023-05-16 06:55:04', '2023-05-16 09:55:04'),
+('c77c5934d3008548d0e208b5bc773f8d46ffa60a7d82a2c931043fe1e4c4db526fe7f8f16e3f2067', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 10:43:20', '2023-05-18 10:43:20', '2023-05-18 13:43:20'),
+('c78e37e0214732706515dca84f8f3664b2755a18bb246826c64e9e30f1a9f805668ca87a0598c2e3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 05:29:53', '2023-06-06 05:29:53', '2023-06-06 08:29:53'),
+('c7dda04657bf212c08eb4e79669b5546ff803d99f9d4feb013aed1dc101b9f2e0bff240a0c1b4672', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 19:09:06', '2023-05-22 19:09:06', '2023-05-22 22:09:06'),
+('c98a7b57ffa40b46950841b8a1af1941b2e7e5091135efb63554541112eff2c2abf95db28b9b1324', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-02 04:41:01', '2023-06-02 04:41:01', '2023-06-02 07:41:01'),
+('c9b472a07f3e16fd575ee6160a388672d86f4b14c9b7129fd9ff9d7b2101c377df780cbc024cce11', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:32:14', '2023-05-16 11:32:14', '2023-05-16 14:32:14'),
+('c9eb23072b33b99da066c5fd4af3e639b8b72b59839f747ebbeb53df77c11444d4479decce5a7490', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 16:20:55', '2023-05-25 16:20:55', '2023-05-25 19:20:55'),
+('cb6409a48339db436f2877d604fd45a3fa69bad7a8f21b02a0d43d864b1b4ff272f52bc967589c61', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 16:00:41', '2023-05-25 16:00:41', '2023-05-25 19:00:41'),
+('cb9167400eb7eaf80fbdc3d38c10f728421f15065cf9b11ac04cd30db02e1b067ad827220ac92229', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:00:23', '2023-05-16 11:00:23', '2023-05-16 14:00:23'),
+('cb9b5c4f2d1fbdf56c52a7fa0c05be48e161d1c3fb0a7a29fc901893059d37f85aaf801bbe4ad17c', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:58:13', '2023-05-17 07:58:13', '2023-05-17 10:58:13'),
+('cc19d5ef477ea229c365559002dd42bb15fe5f0db4b6e4156c0688c7b251e8b11e398f2d0b46b054', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:58:37', '2023-05-27 07:58:37', '2023-05-27 10:58:37'),
+('cc2b46e7b3c87b29975b32559d0dd2a4c8fdfd18345b72af9bcc5e5ed567d3091c917bfa0db3f2e9', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 06:35:46', '2023-05-18 06:35:46', '2023-05-18 09:35:46'),
+('cdb7400f831ee537c3d054c50e41bc4fe784d83cdd8028a706a6e647fb6b7ab85afcb7407617cb80', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 09:47:40', '2023-05-27 09:47:40', '2023-05-27 12:47:40'),
+('ceeb233abee8a7eb6b2e9cf995f854da79dc1db4ad339ae285aff4cbffaa79876a43559f99a429a2', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:10:50', '2023-05-17 06:10:50', '2023-05-17 09:10:50'),
+('d096bb317b36565808167a60b2ed3c01b7e3974fa701f202ff68ebc0c50220d860ee0e7dfd3a4e1e', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 13:35:44', '2023-05-29 13:35:44', '2023-05-29 16:35:44'),
+('d1692504333a968c0962ab2eeed99953df1ce19c720e343c1c18ee022488cd867bc89291c287c829', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 09:50:54', '2023-05-17 09:50:54', '2023-05-17 12:50:54'),
+('d1a608dfa9d3ab2f56ed3b48febb50c36523c426ef658a9bbf2a5061d0833026ee5c62385d659ae9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:14:56', '2023-06-01 17:14:56', '2023-06-01 20:14:56'),
+('d32ab63af5c845e3bd31acf426da4e5f590b0b60ca6c1cdff7c25aa5abe93296befa86d43a606c27', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 03:10:05', '2023-05-25 03:10:05', '2023-05-25 06:10:05'),
+('d3af93ae56e28c945c11eefecf7cc7f9f69bf53fc9e39a6ce2157094cb188ef118617fa8afa57b31', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 08:08:11', '2023-05-16 08:08:11', '2023-05-16 11:08:11'),
+('d3eaa91fbb84491161cae8537a77ce23df2a68b63c2d87ca04f59d4a1d0225b863cba4b61819a5ec', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:03:12', '2023-06-01 11:03:12', '2023-06-01 14:03:12'),
+('d4f31c7cf3c6cdda6ba48a89fda101229e988c053b41178a6f5e8d93aa2bb93c05afcb05981457e2', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:59:31', '2023-05-17 07:59:31', '2023-05-17 10:59:31'),
+('d542ac02ffdf3aa966dbb17ad7c0f62fa10883d0914c2158bd61d6300256f041d1f87be6e4950e21', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 02:20:31', '2023-05-22 02:20:31', '2023-05-22 05:20:31'),
+('d598f045716dad41f6766ac9db4c742b2fe7c99f5ac3f2c91e3f9f7340beb2835494474eb8823006', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 07:00:25', '2023-05-16 07:00:25', '2023-05-16 10:00:25'),
+('d5c8a631d3b0486210631001dc5dc537bdb0c5c71c1ab12e2943d368559ff10cd833b75cfb87e767', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:15:53', '2023-05-18 07:15:53', '2023-05-18 10:15:53'),
+('d6004e4006cd4d0c9a5a1806dfecaffb955875fc10a6705536836463edd3de3fa9a4d71b10a0df4d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 17:48:12', '2023-05-30 17:48:12', '2023-05-30 20:48:12'),
+('d796b675e3df7fe06f0cbad9c3b8b28f518361ca6a72bb5528f39c411ab957569da585344bd0e3b1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 14:38:16', '2023-05-25 14:38:16', '2023-05-25 17:38:16'),
+('d85d2d69af1e2c405f76889b292ad1994917070060567c9b4d4d224c59ef975e3628642654179df3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:53:24', '2023-05-17 07:53:24', '2023-05-17 10:53:24'),
+('db6bfbaeff7df7f3742408af23614194e4d67c4fda02f305cb934a77cfdc2aa06284f0668c1e9581', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 07:11:51', '2023-06-01 07:11:51', '2023-06-01 10:11:51'),
+('dcff612e55699c110cde95f640b31e46de3870684150fe4194ed8497217f84af838030861dbe9786', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 11:26:09', '2023-06-01 11:26:09', '2023-06-01 14:26:09'),
+('dd3e2b4aea887a363049305b3d63d8ea33d754ab000febe0c7b6c65f4d7ae726bf95d17ccb4b29dc', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 16:27:18', '2023-05-22 16:27:18', '2023-05-22 19:27:18'),
+('ddde793b0eb6409860c2409fa962ae3e33f4150061c31411c0cffbd5c29e1cf2905b5f652a2a5439', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 07:05:28', '2023-05-19 07:05:28', '2023-05-19 10:05:28'),
+('df56bbfc76da7ca23f4bc0a0d781feccc6f1c80734ce04ee4104c9e1f5317a46bd8eddfbb06e5fa3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:00:37', '2023-05-16 12:00:37', '2023-05-16 15:00:37'),
+('df64612c36a5c4aac40c0bb6cac3793a621962a7e6792208500ae12cad2bb76ff029c550e2ca1d33', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 10:20:30', '2023-05-27 10:20:30', '2023-05-27 13:20:30'),
+('e022332eb1229d249ab318d4819f68c1fcc9ed27d57e74f96974b6c42b87b211bdcf3a8ccfef0a78', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 05:46:17', '2023-05-30 05:46:17', '2023-05-30 08:46:17'),
+('e05c4a80776b686d7d53514d673398ae774d6ded72e9d49787c8a1a6ac73eaef54d371680923771d', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 05:23:29', '2023-05-30 05:23:29', '2023-05-30 08:23:29'),
+('e07790f88d3d96ec0c78cfbacd7f2b54614a770076ee88538194b815f0c2935afc65214632562653', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 04:53:40', '2023-06-05 04:53:40', '2023-06-05 07:53:40'),
+('e0a08305a27ff20884b6e22c2886c9d15166e543dbb877a5225ec5caf1f93b39f933b758d6213898', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 07:57:15', '2023-05-16 07:57:16', '2023-05-16 10:57:15'),
+('e0b2f9f319fd7a82b62451b292191b68aa35c397a6af69844a9edcd55a0d823bd4e575f7d055c623', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 09:52:41', '2023-05-27 09:52:41', '2023-05-27 12:52:41'),
+('e1333c2cffc592f7ab006929b573be2f5710e013f20c95c02bdb7ab509a10b852c16b423c53ee111', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:21:59', '2023-05-17 06:21:59', '2023-05-17 09:21:59'),
+('e1da0692858098f3e80d8f8891ba4eb7d3e256f78349cad336a455d929b3d8cf553f8a1d6711369f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 11:09:59', '2023-06-06 11:09:59', '2023-06-06 14:09:59'),
+('e2bf804d2e74f1a022768649561762c58993c3f78b93d6033ec711e2d993a53337e51dae1e9c337b', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 05:16:37', '2023-05-17 05:16:37', '2023-05-17 08:16:37'),
+('e3d2d4cd9a409367698ab758ca7003d4152f5cee1cb42f8e621b63d319162269b463f03675342180', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:15:01', '2023-06-01 17:15:01', '2023-06-01 20:15:01'),
+('e3fe46ae666ac5f90d0b70209c5b6fa94307e2d4dc3028c441c1a383ec4f34509dcbbccac3654f18', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:21:12', '2023-05-17 06:21:12', '2023-05-17 09:21:12'),
+('e45d3f31f49ce2f33b570558cba414dba14da1b5bb0ebf9d9300d5f17342f17ac8f7d22a8c81b799', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-28 12:13:50', '2023-05-28 12:13:50', '2023-05-28 15:13:50'),
+('e580e659beb912acd3080fb9dc60833ef45469298e928357ae9b9dc7d427a3e51599737975caf5e2', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 13:47:39', '2023-05-27 13:47:39', '2023-05-27 16:47:39'),
+('e5fc32165b6d3f685d7254f0c33a0db73867a64601ca0d3d77e6ef65435c772cc3b3fe66b9d4ddfb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:14:38', '2023-06-01 17:14:38', '2023-06-01 20:14:38'),
+('e6cd18ea6746e74a6512838fe5753c07262544da35e1ce804add43474e1f2b4194ed83b3482c59aa', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 07:51:27', '2023-05-27 07:51:27', '2023-05-27 10:51:27'),
+('e748f3a9d20cf9080d1fd33e409acba17e1ab67b5a623a062d35f3a01af3092be041ab7de5bb0079', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:56:25', '2023-05-16 06:56:25', '2023-05-16 09:56:25'),
+('e7d68fc4bf8f940a37338e8c25a2bc663dc9e71a302f29c24a6b0c7ab5a7a0679ed6a606bbbe3829', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 09:39:39', '2023-05-18 09:39:39', '2023-05-18 12:39:39'),
+('e8102a23d865ce928b62ab1f2ebbe71ee6c655afabcfcee6fbec6a6fc45f59cfd1d24ebe4ba57103', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 12:46:27', '2023-05-16 12:46:27', '2023-05-16 15:46:27'),
+('e8762f1bce573a81f05ea4ec57fa05ca2f971bf4d6e58d52f66eba7d91d502320a9b2ce00a3cf0c3', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:12:54', '2023-05-17 06:12:54', '2023-05-17 09:12:54'),
+('e8dac7e718c6283f3f36e0473ec62cdab774200746de70d43d50341fabe01aa12f783e00049d441c', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 06:44:48', '2023-05-31 06:44:48', '2023-05-31 09:44:48'),
+('e8ea5fcf49e20c5cbeb25b51ce6a33e2695221c0d9d248277b525571951b44ba89495cb0b37a682c', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 10:38:29', '2023-05-31 10:38:29', '2023-05-31 13:38:29'),
+('e9be377964834b760fc9ccdf1b177e673a9c027a8e432a994e1b3b65ce114b57c03a8e90e83f408a', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:11:52', '2023-05-16 06:11:52', '2023-05-16 09:11:52'),
+('ea9bd360c3210281cb375100638d1a728879cb90b6e1cad44bf60eaeee559dfab0fbb9fd550aadee', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 04:38:00', '2023-05-19 04:38:00', '2023-05-19 07:38:00'),
+('eaac8cdec87ac30ca63f1e289d65be9b442a4dada6e70b6aa274febab5cbbe0c6a2cdbb501c5f2d1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 08:21:11', '2023-05-18 08:21:11', '2023-05-18 11:21:11'),
+('ec2359927ae6f885e6d0c1d31aea85a52a493d95e7857b145e96ae3ffc30e5fa698e65aa5d651520', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 10:06:20', '2023-05-22 10:06:21', '2023-05-22 13:06:20'),
+('ecaeb17abc3a8e2538a0c105c8681ea0eb7beb87afd5a49c412fe8dedafabe6060d8fb0d7a7f921a', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:04:40', '2023-06-01 17:04:41', '2023-06-01 20:04:40'),
+('edbb925a19946115ab16021a2df7c5c0a6e17a74610a8d2c0817aaf15c9d6718ed09f16876b75979', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-05 12:24:28', '2023-06-05 12:24:28', '2023-06-05 15:24:28'),
+('effc4187ff843a1232692971e4cfe5074b2abb1578bf59d1bf150b51b7ac70946de16d2631cd1f7c', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 06:13:12', '2023-05-29 06:13:12', '2023-05-29 09:13:12'),
+('f0ac52d20e7c867fbb1ac25d8dcaaff29acc57ed426678c3ce824c506a93e6c8810d4a11a01a2f60', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-22 18:08:31', '2023-05-22 18:08:31', '2023-05-22 21:08:31'),
+('f23c67d257be16135da23e643e88006eb062ebcad9e5819b6b4ab1d2982e9a777a6419970fd76277', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 11:30:48', '2023-05-27 11:30:48', '2023-05-27 14:30:48'),
+('f28cc561b048f66585f5fee9d7d20ae80e0df5201d04f7f186726abc40a66a31b77d632710027f2d', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:41:35', '2023-05-17 06:41:35', '2023-05-17 09:41:35'),
+('f34db7b07142818ecba6d08a72a3d48351293a215176bf78eebb0e3f88da0dde81251f118012d6ac', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 06:52:13', '2023-05-17 06:52:13', '2023-05-17 09:52:13'),
+('f4a87aa0f0e881ca42a7399288c3f4f858093f874be8fdebdf58a1cc4266141ae8692199342d911f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 09:41:52', '2023-06-01 09:41:52', '2023-06-01 12:41:52'),
+('f53367d43344c0bb84ea6cda8ac1f131b925bb77e14fd86ed5ce98abcfeca75c9dca108814c95f05', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 05:16:12', '2023-05-17 05:16:12', '2023-05-17 08:16:12'),
+('f53425ec59af0403c3eee965baa63b58212079faac33b6ab9b94895889ddeb54fd00803c8bfb2a45', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 11:31:52', '2023-05-16 11:31:52', '2023-05-16 14:31:52'),
+('f5b4e0b6a3b31e7062ff2854297c35f142d2fe27663eafd719659e84676d381d8b307a73cfd261f7', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-30 12:40:01', '2023-05-30 12:40:01', '2023-05-30 15:40:01'),
+('f5d2d4ffd0680c0d1dcf188ad69c845b1bbd299e50595e6d174d9dab6da6d32129865a496d914596', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 17:13:05', '2023-06-01 17:13:05', '2023-06-01 20:13:05'),
+('f6327a2c1e9a72ece2c219af9679803a9479bf4fa97779d46b95f72feb4bf57eb30027f1a447cafb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-29 10:31:50', '2023-05-29 10:31:50', '2023-05-29 13:31:50'),
+('f7050ffa0ee7d8aa574cde99f5da62ba6357356980d489bc4040c50c37d3996e77516e65df251c9d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-19 05:59:21', '2023-05-19 05:59:21', '2023-05-19 08:59:21'),
+('f723d3904b632525e95585cdc403b5bda808c8da1ec379829e2bf759eb408e0c0fc3c0d8ed857411', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 06:43:58', '2023-05-31 06:43:58', '2023-05-31 09:43:58'),
+('f78af423f38b556e5fd005f26fdde47972476eea11d206ee2b2be4be732da383e7a5ef0c1a6d2319', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-25 16:37:39', '2023-05-25 16:37:39', '2023-05-25 19:37:39'),
+('fa3600f941f0ea9b6ddbd64cbc88cd1eed87114324eba85b0e98db6575481ee25c6196acf0ceb342', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 10:36:06', '2023-05-31 10:36:06', '2023-05-31 13:36:06'),
+('fa373c831c49b9c2cf2b65be519f6168aaf7a70ab3fef35b6412046499673682f7a6cd2611ef9465', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 10:36:21', '2023-05-16 10:36:21', '2023-05-16 13:36:21'),
+('fb00495fd7cc0229e01f11e5169db60a9cab8158df0f6b92ace69555e7d6599c94b356b1682798f2', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-01 12:08:19', '2023-06-01 12:08:19', '2023-06-01 15:08:19'),
+('fb5c0f61da1215a99d5d973bf0db7d31488532ce309b0b7d5688b820b9d6a0722110cf4077096dd3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2023-06-06 14:44:52', '2023-06-06 14:44:52', '2023-06-06 17:44:52'),
+('fb78905663af0f70d31dcd365d527b57d791886ee36e1ed68349a4d5f76e0ca24cbc7eafbe8ec3c7', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-20 20:07:11', '2023-05-20 20:07:11', '2023-05-20 23:07:11'),
+('fcf0d2c5bccdddc702c8b4ce709fac8739b042a19e6da0d20aad687ca41d1648a1c9d9e90118d60e', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-16 06:53:10', '2023-05-16 06:53:10', '2023-05-16 09:53:10'),
+('fda2d3492307d1347d46fd66a28c37e62c13c7de03b98403808eafd2fc99d1e0d945bb1df9694a4b', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-31 10:18:11', '2023-05-31 10:18:11', '2023-05-31 13:18:11'),
+('fdffd2ee45db9086cbd0401c5c5fa9b011785bad8bf5c3d4a5b0cf2c0fbae774032f2e161bad6c50', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-23 07:59:41', '2023-05-23 07:59:41', '2023-05-23 10:59:41'),
+('fec8309abd84be4a153997906b02c03062580a716c5fd23779b684329116c6b9703c09116a595f9f', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-18 07:19:49', '2023-05-18 07:19:49', '2023-05-18 10:19:49'),
+('ff263a2a457a82d5e98940c9af4fba4e3c931debf6d097b731e4def7c28db5877fba833af27e3743', 1000005191, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-27 10:35:35', '2023-05-27 10:35:35', '2023-05-27 13:35:35'),
+('ffa959924b7cb26744c0cc02a405f7b9c9b840f8a4ee8d963a05e74a8e905bc91a26ffd716cf32c1', 3, 1, 'Laravel Password Grant Client', '[]', 0, '2023-05-17 07:27:30', '2023-05-17 07:27:30', '2023-05-17 10:27:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `client_id` bigint(20) UNSIGNED NOT NULL,
+  `scopes` text DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_clients`
+--
+
+CREATE TABLE `oauth_clients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `secret` varchar(100) DEFAULT NULL,
+  `provider` varchar(255) DEFAULT NULL,
+  `redirect` text NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'r', 'ZLPTrRL6EV1sXJQKkPtuhtvCXKimsBBZDLXt31QO', NULL, 'http://localhost', 1, 0, 0, '2023-05-16 05:50:13', '2023-05-16 05:50:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `client_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2023-05-16 05:50:13', '2023-05-16 05:50:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) NOT NULL,
+  `access_token_id` varchar(100) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_academic_levels`
+--
+
+CREATE TABLE `tbl_academic_levels` (
+  `level_id` int(11) NOT NULL,
+  `year_id` int(11) DEFAULT NULL,
+  `semester` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_academic_levels`
+--
+
+INSERT INTO `tbl_academic_levels` (`level_id`, `year_id`, `semester`) VALUES
+(1, 1, 1),
+(2, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_academic_years`
+--
+
+CREATE TABLE `tbl_academic_years` (
+  `year_id` int(11) NOT NULL,
+  `year` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_academic_years`
+--
+
+INSERT INTO `tbl_academic_years` (`year_id`, `year`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_active_period_hostel_online_application`
+--
+
+CREATE TABLE `tbl_active_period_hostel_online_application` (
+  `active_period_id` int(11) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `date_activated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `activated_by` varchar(20) NOT NULL,
+  `period_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_active_period_hostel_online_application`
+--
+
+INSERT INTO `tbl_active_period_hostel_online_application` (`active_period_id`, `is_active`, `date_activated`, `activated_by`, `period_id`) VALUES
+(14, 0, '2023-05-26 07:00:04', '1', 300),
+(50, 1, '2023-06-07 12:47:00', '1', 257),
+(51, 0, '2023-06-05 14:00:12', '1', 220),
+(54, 0, '2023-06-05 14:00:04', '1', 299),
+(55, 0, '2023-06-07 12:01:33', '1', 298);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_blacklisted_students`
+--
+
+CREATE TABLE `tbl_blacklisted_students` (
+  `blacklisted_students_id` int(11) NOT NULL,
+  `reason` varchar(500) NOT NULL,
+  `blacklisted_by` varchar(10) NOT NULL,
+  `student_regnumber` varchar(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_blacklisted_students`
+--
+
+INSERT INTO `tbl_blacklisted_students` (`blacklisted_students_id`, `reason`, `blacklisted_by`, `student_regnumber`, `created_at`, `updated_at`) VALUES
+(1, 'waba', '1', 'c17131693g', '2023-06-07 12:18:08', '2023-06-07 12:18:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_floors`
+--
+
+CREATE TABLE `tbl_floors` (
+  `floor_id` int(11) NOT NULL,
+  `floor_name` varchar(15) NOT NULL,
+  `hostel_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_floors`
+--
+
+INSERT INTO `tbl_floors` (`floor_id`, `floor_name`, `hostel_id`) VALUES
+(2, 'dfff', 41),
+(7, 'first', 1),
+(5, 'First', 24),
+(11, 'first', 53),
+(1, 'ground', 0),
+(6, 'ground', 1),
+(3, 'ground', 24),
+(10, 'ground', 45),
+(8, 'second', 1),
+(12, 'second floor', 53),
+(9, 'third', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_hostels`
+--
+
+CREATE TABLE `tbl_hostels` (
+  `hostel_id` int(11) NOT NULL,
+  `hostel_name` varchar(100) NOT NULL,
+  `location_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_hostels`
+--
+
+INSERT INTO `tbl_hostels` (`hostel_id`, `hostel_name`, `location_id`) VALUES
+(44, '33', 1),
+(52, '331', 9),
+(42, 'Gunz1233', 1),
+(1, 'Hostel A OG', 1),
+(41, 'hostel D', 7),
+(36, 'hostel x', 1),
+(45, 'hostel z', 1),
+(24, 'hostel zx', 1),
+(53, 'Magamba', 1),
+(51, 'sdddssj', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_hostel_preference`
+--
+
+CREATE TABLE `tbl_hostel_preference` (
+  `hostel_preference_id` int(11) NOT NULL,
+  `hostel_id` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `activated_by` varchar(255) NOT NULL,
+  `date_activated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `residence_session_id` int(11) NOT NULL,
+  `floor_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_hostel_preference`
+--
+
+INSERT INTO `tbl_hostel_preference` (`hostel_preference_id`, `hostel_id`, `active_period_id`, `activated_by`, `date_activated`, `residence_session_id`, `floor_id`) VALUES
+(48, 1, 55, '1', '2023-06-06 13:54:24', 30, 7),
+(52, 1, 55, '3', '2023-06-07 08:00:53', 30, 8),
+(54, 1, 55, '3', '2023-06-07 08:39:31', 30, 6),
+(56, 1, 55, '3', '2023-06-07 08:39:31', 30, 9),
+(57, 1, 50, '3', '2023-06-07 12:44:14', 27, 7),
+(58, 1, 50, '3', '2023-06-07 12:44:14', 27, 6),
+(59, 1, 50, '3', '2023-06-07 12:44:14', 27, 8),
+(60, 1, 50, '3', '2023-06-07 12:44:14', 27, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_locations`
+--
+
+CREATE TABLE `tbl_locations` (
+  `location_id` int(11) NOT NULL,
+  `location_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_locations`
+--
+
+INSERT INTO `tbl_locations` (`location_id`, `location_name`) VALUES
+(1, 'CUT MAIN CAMPUS'),
+(7, 'harare'),
+(9, 'KARIBA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_minimum_threshhold`
+--
+
+CREATE TABLE `tbl_minimum_threshhold` (
+  `minimum_threshhold` varchar(255) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `minimum_threshhold_id` int(11) NOT NULL,
+  `set_by` varchar(255) NOT NULL,
+  `period_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_minimum_threshhold`
+--
+
+INSERT INTO `tbl_minimum_threshhold` (`minimum_threshhold`, `active_period_id`, `minimum_threshhold_id`, `set_by`, `period_id`) VALUES
+('', 14, 200, '1', 0),
+('', 51, 400, '1', 0),
+('', 50, 500, '1', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_resevations`
+--
+
+CREATE TABLE `tbl_resevations` (
+  `resavation_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `room_number` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `reserved_by` varchar(255) NOT NULL,
+  `residence_session_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `tbl_resevations`
+--
+
+INSERT INTO `tbl_resevations` (`resavation_id`, `room_id`, `room_number`, `created_at`, `updated_at`, `reserved_by`, `residence_session_id`) VALUES
+(35, 37, 3, '2023-06-07 10:40:23', '2023-06-07 10:40:23', '3', 29),
+(36, 37, 3, '2023-06-07 10:40:40', '2023-06-07 10:40:40', '3', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_residence_sessions`
+--
+
+CREATE TABLE `tbl_residence_sessions` (
+  `residence_session_id` int(11) NOT NULL,
+  `session_name` varchar(255) NOT NULL,
+  `is_program_driven` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `available_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_residence_sessions`
+--
+
+INSERT INTO `tbl_residence_sessions` (`residence_session_id`, `session_name`, `is_program_driven`, `active_period_id`, `level`, `semester`, `start_date`, `end_date`, `available_status`) VALUES
+(8, 'march-june', 1, 14, 1, 1, '2023-11-02', '2023-05-22', 1),
+(27, 'august to  dec 42', 0, 50, 4, 2, '2023-05-30', '2023-06-10', 1),
+(28, 'march to april 2023 4.2', 0, 51, 4, 2, '2023-06-01', '2023-06-10', 1),
+(29, 'level 1', 0, 51, 1, 1, '2023-06-05', '2023-06-30', 1),
+(30, 'level 1.1', 0, 55, 1, 1, '2023-06-05', '2023-07-25', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_rights`
+--
+
+CREATE TABLE `tbl_rights` (
+  `right_id` int(11) NOT NULL,
+  `right_name` varchar(255) NOT NULL,
+  `right_description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_rights`
+--
+
+INSERT INTO `tbl_rights` (`right_id`, `right_name`, `right_description`) VALUES
+(1, 'create_hostel', NULL),
+(2, 'create_room_costs', NULL),
+(3, 'create_periods', NULL),
+(4, 'allocate_rooms', NULL),
+(5, 'approve_allocations', NULL),
+(6, 'create_users', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_rooms`
+--
+
+CREATE TABLE `tbl_rooms` (
+  `room_id` int(11) NOT NULL,
+  `room_type_id` int(11) NOT NULL,
+  `floor_id` int(11) NOT NULL,
+  `hostel_id` int(11) NOT NULL,
+  `room_gender` varchar(1) NOT NULL,
+  `room_number` int(10) UNSIGNED NOT NULL,
+  `room_capacity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_rooms`
+--
+
+INSERT INTO `tbl_rooms` (`room_id`, `room_type_id`, `floor_id`, `hostel_id`, `room_gender`, `room_number`, `room_capacity`) VALUES
+(1, 13, 1, 1, 'm', 234, 3),
+(12, 13, 1, 24, 'm', 123, 3),
+(14, 11, 1, 24, 'm', 678, 2),
+(15, 1, 1, 24, 'f', 333, 3),
+(17, 1, 1, 24, 'f', 787, 3),
+(20, 1, 1, 24, 'f', 12, 3),
+(23, 1, 1, 24, 'f', 100, 3),
+(25, 1, 1, 36, 'f', 110, 3),
+(27, 13, 1, 36, 'f', 1111, 1),
+(28, 1, 1, 36, 'f', 113, 3),
+(29, 1, 1, 36, 'f', 123, 3),
+(30, 11, 1, 36, 'f', 122, 2),
+(31, 1, 1, 41, 'f', 122, 3),
+(32, 11, 1, 41, 'f', 234, 3),
+(33, 1, 1, 41, 'f', 24332, 3),
+(34, 1, 1, 41, 'f', 273, 3),
+(35, 1, 5, 24, 'm', 254, 3),
+(36, 1, 5, 24, 'm', 33, 3),
+(37, 11, 7, 1, 'm', 3, 1),
+(40, 1, 6, 1, 'm', 254, 3),
+(41, 1, 8, 1, 'm', 33, 8),
+(42, 11, 9, 1, 'f', 67, 7),
+(43, 1, 5, 24, 'm', 990, 4),
+(45, 1, 7, 1, 'm', 90, 4),
+(47, 1, 7, 1, 'm', 901, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_allocations`
+--
+
+CREATE TABLE `tbl_room_allocations` (
+  `room_allocation_id` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `application_id` int(11) DEFAULT NULL,
+  `student_id` int(11) NOT NULL,
+  `date_allocated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `allocated_by` varchar(20) NOT NULL,
+  `residence_session_id` int(11) NOT NULL,
+  `reg_number` varchar(255) NOT NULL,
+  `approved_status` int(11) DEFAULT NULL,
+  `approved_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_allocation_applications`
+--
+
+CREATE TABLE `tbl_room_allocation_applications` (
+  `room_allocation_application_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `applied_by` varchar(20) NOT NULL,
+  `date_of_application` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `payment_status` int(11) DEFAULT NULL,
+  `expiration_date` datetime NOT NULL,
+  `residence_session_id` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `reg_number` varchar(30) NOT NULL,
+  `application_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_room_allocation_applications`
+--
+
+INSERT INTO `tbl_room_allocation_applications` (`room_allocation_application_id`, `room_id`, `student_id`, `applied_by`, `date_of_application`, `payment_status`, `expiration_date`, `residence_session_id`, `active_period_id`, `reg_number`, `application_status`) VALUES
+(1, 37, 1000005191, 'system', '2023-06-07 12:47:36', NULL, '2023-06-12 12:47:36', 27, 50, 'C17131693G', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_preference`
+--
+
+CREATE TABLE `tbl_room_preference` (
+  `room_preference_id` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `activated_by` varchar(255) NOT NULL,
+  `date_activated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `residence_session_id` int(11) NOT NULL,
+  `hostel_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_room_preference`
+--
+
+INSERT INTO `tbl_room_preference` (`room_preference_id`, `active_period_id`, `room_id`, `activated_by`, `date_activated`, `residence_session_id`, `hostel_id`) VALUES
+(21, 14, 30, '1', '2023-02-01 22:00:00', 8, 36),
+(29, 14, 35, '3', '2023-05-22 22:02:59', 8, 24),
+(32, 14, 20, '3', '2023-05-22 22:08:42', 8, 24),
+(33, 14, 36, '3', '2023-05-22 22:08:44', 8, 24),
+(34, 14, 23, '3', '2023-05-22 22:08:46', 8, 24),
+(35, 14, 15, '3', '2023-05-22 22:08:48', 8, 24),
+(36, 14, 14, '3', '2023-05-22 22:08:50', 8, 24),
+(37, 14, 17, '3', '2023-05-22 22:08:51', 8, 24),
+(38, 14, 25, '3', '2023-05-22 22:08:53', 8, 36),
+(41, 14, 41, '3', '2023-05-22 22:35:12', 8, 1),
+(42, 14, 1, '3', '2023-05-22 22:35:14', 8, 1),
+(43, 14, 40, '3', '2023-05-22 22:35:16', 8, 1),
+(44, 14, 28, '3', '2023-05-22 22:35:18', 8, 36),
+(45, 14, 29, '3', '2023-05-22 22:35:20', 8, 36),
+(46, 14, 27, '3', '2023-05-22 22:39:37', 8, 36),
+(55, 50, 35, '1', '2023-05-30 12:26:58', 27, 24),
+(56, 50, 45, '1', '2023-05-30 12:27:00', 27, 1),
+(57, 50, 36, '1', '2023-05-30 12:27:01', 27, 24),
+(58, 50, 43, '1', '2023-05-30 12:27:03', 27, 24),
+(59, 50, 12, '1', '2023-05-30 12:27:04', 27, 24),
+(60, 50, 15, '1', '2023-05-30 12:27:06', 27, 24),
+(61, 50, 17, '1', '2023-05-30 12:27:08', 27, 24),
+(62, 50, 20, '1', '2023-05-30 12:27:10', 27, 24),
+(67, 51, 37, '1', '2023-05-31 13:10:09', 28, 1),
+(68, 51, 35, '1', '2023-05-31 13:10:44', 28, 24),
+(70, 51, 43, '1', '2023-05-31 13:10:50', 28, 24),
+(71, 51, 1, '1', '2023-05-31 13:10:53', 28, 1),
+(72, 51, 12, '1', '2023-05-31 13:10:55', 28, 24),
+(73, 51, 45, '1', '2023-05-31 13:10:57', 28, 1),
+(75, 51, 14, '1', '2023-05-31 13:11:01', 28, 24),
+(76, 51, 36, '1', '2023-05-31 13:11:06', 28, 24),
+(78, 51, 41, '1', '2023-06-05 07:48:48', 29, 1),
+(79, 51, 42, '1', '2023-06-05 07:48:52', 29, 1),
+(80, 51, 20, '1', '2023-06-05 07:48:58', 29, 24),
+(82, 55, 37, '1', '2023-06-05 14:24:57', 30, 1),
+(83, 55, 41, '1', '2023-06-05 14:25:00', 30, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_status`
+--
+
+CREATE TABLE `tbl_room_status` (
+  `room_status_id` int(11) NOT NULL,
+  `room_status` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `residence_session_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_room_status`
+--
+
+INSERT INTO `tbl_room_status` (`room_status_id`, `room_status`, `room_id`, `active_period_id`, `residence_session_id`) VALUES
+(1, 0, 42, 50, 30),
+(2, 0, 37, 50, 27);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_types`
+--
+
+CREATE TABLE `tbl_room_types` (
+  `room_type_id` int(11) NOT NULL,
+  `room_type` varchar(255) NOT NULL,
+  `room_capacity` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_room_types`
+--
+
+INSERT INTO `tbl_room_types` (`room_type_id`, `room_type`, `room_capacity`) VALUES
+(1, 'box', '4'),
+(11, 'double', '2'),
+(13, 'single', '1'),
+(17, 'twin', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_room_type_costs`
+--
+
+CREATE TABLE `tbl_room_type_costs` (
+  `room_type_cost_id` int(11) NOT NULL,
+  `room_type_id` int(11) NOT NULL,
+  `room_price` float NOT NULL,
+  `set_by` int(11) NOT NULL,
+  `date_set` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `active_period_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_room_type_costs`
+--
+
+INSERT INTO `tbl_room_type_costs` (`room_type_cost_id`, `room_type_id`, `room_price`, `set_by`, `date_set`, `active_period_id`) VALUES
+(2, 11, 250, 1, '2023-05-13 12:21:09', 14),
+(3, 13, 150, 1, '2023-05-13 12:21:24', 14),
+(6, 1, 300, 3, '2023-05-26 06:49:29', 14),
+(7, 1, 456, 1, '2023-05-30 19:46:18', 50),
+(8, 11, 300, 1, '2023-05-30 19:46:35', 50),
+(9, 13, 200, 1, '2023-05-30 19:46:58', 50),
+(10, 1, 500, 1, '2023-05-31 13:13:16', 51),
+(11, 11, 200, 1, '2023-05-31 13:13:37', 51),
+(12, 13, 300, 1, '2023-05-31 13:13:58', 51),
+(13, 17, 544, 1, '2023-06-05 15:16:35', 51),
+(14, 1, 300, 1, '2023-06-06 07:10:09', 55),
+(15, 11, 400, 1, '2023-06-05 15:10:51', 55),
+(16, 17, 5222, 1, '2023-06-05 15:17:26', 55),
+(17, 13, 700, 1, '2023-06-06 06:43:41', 55);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_temp_room_allocations`
+--
+
+CREATE TABLE `tbl_temp_room_allocations` (
+  `temp_room_allocation_id` int(11) NOT NULL,
+  `active_period_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `application_id` int(11) DEFAULT NULL,
+  `student_id` int(11) NOT NULL,
+  `date_allocated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `allocated_by` varchar(20) NOT NULL,
+  `residence_session_id` int(11) NOT NULL,
+  `reg_number` varchar(255) NOT NULL,
+  `approved_by` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_users`
+--
+
+CREATE TABLE `tbl_users` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `is_active` int(11) DEFAULT NULL,
+  `password` varchar(255) NOT NULL DEFAULT '1234567890',
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `role` int(11) NOT NULL,
+  `ec_number` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`user_id`, `name`, `email`, `is_active`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `ec_number`) VALUES
+(1, 'Michael Mhizha', 'mmhizha96@gmail.com', 1, '$2y$10$ED5K6TkvqFbkPEUKP/Z1tu0.c/Cf3qjMroAW9Z8LYi8ATqmQnkn.2', NULL, '2023-05-16 05:48:59', '2023-05-16 05:48:59', 1, '7895'),
+(2, 'Takudzwa Mhizha', 'Tmhizha@gmail.com', 1, '$2y$10$6zZcB.ZcXTJW7t3JklU34.AOzM1K8yOXhd9fJTcJx0vWj6.wmmPY2', NULL, '2023-05-16 10:10:39', '2023-05-16 10:10:39', 1, '8697'),
+(3, 'Michael Mhizha', 'mmhizha@gmail.com', 1, '$2y$10$7/RixGrXUrY0tWi/KtjiSOEyNJZmhTig4Htm6SSA6P2a5PZO2b9Va', NULL, '2023-05-16 10:12:36', '2023-05-25 11:30:54', 1, '2222'),
+(7, 'Michael Magube', 'mmhizha9656@gmail.com', 1, '$2y$10$r3dE0oPOsp/E2Z/drEjJi.KjxOZrfu9G3Eb0a9j/xilMJTf3R200y', NULL, '2023-05-25 10:42:28', '2023-05-25 11:30:59', 2, '4847'),
+(8, 'Chiwawa', 'tchiwawa@gmail.com', 1, '$2y$10$C0e0jw7X3UgDLzzIUWeDS.1BaI7r8KAskpADZE6gVFYVkJA1k6k5.', NULL, '2023-05-25 10:53:24', '2023-05-25 11:30:45', 1, '123454'),
+(9, 'Ndoro', 'chester@gmail.com', 1, '$2y$10$PL6OIPbMdJxADn2u7dGQfege9qx97LOZtQ.9KZFkgZXNkD1qWvWm2', NULL, '2023-05-25 11:44:07', '2023-05-25 11:44:07', 2, '3478'),
+(10, 'dchawira@cut.ac.zw', 'dchawira@cut.ac.zw', 1, '$2y$10$hLnAAB2TKkqzJthE9MEWNuZ9jnrd2hMhc5oOO.YeJ9UuahKsDbLL.', NULL, '2023-05-25 12:13:44', '2023-05-25 12:13:44', 1, '5746'),
+(11, 'MTMHIZHA', 'chester@1gmail.com', 1, '$2y$10$8FdDQpcieTKJqAIF7dZGD.HaY7nY3n5iTPXlHnnXccpN8LdvjwN4O', NULL, '2023-05-25 12:22:05', '2023-05-25 13:53:29', 2, '984'),
+(12, 'Darlington Chawira', 'dchawira1@cut.ac.zw', 1, '$2y$10$S7DNxoxG36O20seszCJ0jO4DeLRs76Xfvy/JpF9b699GWWG6Kzj9m', NULL, '2023-05-26 00:58:41', '2023-05-26 00:59:33', 2, '47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_rights`
+--
+
+CREATE TABLE `tbl_user_rights` (
+  `user_right_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `right_id` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_user_rights`
+--
+
+INSERT INTO `tbl_user_rights` (`user_right_id`, `user_id`, `right_id`) VALUES
+(26, 1, '1'),
+(27, 1, '2'),
+(28, 1, '3'),
+(29, 1, '4'),
+(30, 1, '5'),
+(31, 1, '6'),
+(24, 12, '4'),
+(25, 12, '5');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_access_tokens`
+--
+ALTER TABLE `oauth_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_access_tokens_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_auth_codes`
+--
+ALTER TABLE `oauth_auth_codes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_auth_codes_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_clients_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_refresh_tokens`
+--
+ALTER TABLE `oauth_refresh_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `tbl_academic_levels`
+--
+ALTER TABLE `tbl_academic_levels`
+  ADD PRIMARY KEY (`level_id`),
+  ADD KEY `year_id` (`year_id`);
+
+--
+-- Indexes for table `tbl_academic_years`
+--
+ALTER TABLE `tbl_academic_years`
+  ADD PRIMARY KEY (`year_id`);
+
+--
+-- Indexes for table `tbl_active_period_hostel_online_application`
+--
+ALTER TABLE `tbl_active_period_hostel_online_application`
+  ADD PRIMARY KEY (`active_period_id`),
+  ADD UNIQUE KEY `period_id` (`period_id`);
+
+--
+-- Indexes for table `tbl_blacklisted_students`
+--
+ALTER TABLE `tbl_blacklisted_students`
+  ADD PRIMARY KEY (`blacklisted_students_id`) USING BTREE;
+
+--
+-- Indexes for table `tbl_floors`
+--
+ALTER TABLE `tbl_floors`
+  ADD PRIMARY KEY (`floor_id`),
+  ADD UNIQUE KEY `floor_name` (`floor_name`,`hostel_id`);
+
+--
+-- Indexes for table `tbl_hostels`
+--
+ALTER TABLE `tbl_hostels`
+  ADD PRIMARY KEY (`hostel_id`),
+  ADD UNIQUE KEY `hostel_name` (`hostel_name`,`location_id`),
+  ADD KEY `hostel_id` (`hostel_id`),
+  ADD KEY `location_id` (`location_id`);
+
+--
+-- Indexes for table `tbl_hostel_preference`
+--
+ALTER TABLE `tbl_hostel_preference`
+  ADD PRIMARY KEY (`hostel_preference_id`),
+  ADD UNIQUE KEY `hostel_id` (`hostel_id`,`residence_session_id`,`floor_id`),
+  ADD KEY `active_period_id` (`active_period_id`),
+  ADD KEY `residence_session_id` (`residence_session_id`),
+  ADD KEY `floar_id` (`floor_id`);
+
+--
+-- Indexes for table `tbl_locations`
+--
+ALTER TABLE `tbl_locations`
+  ADD PRIMARY KEY (`location_id`),
+  ADD UNIQUE KEY `location_name` (`location_name`);
+
+--
+-- Indexes for table `tbl_minimum_threshhold`
+--
+ALTER TABLE `tbl_minimum_threshhold`
+  ADD PRIMARY KEY (`minimum_threshhold_id`),
+  ADD KEY `active_period_id` (`active_period_id`);
+
+--
+-- Indexes for table `tbl_resevations`
+--
+ALTER TABLE `tbl_resevations`
+  ADD PRIMARY KEY (`resavation_id`) USING BTREE,
+  ADD UNIQUE KEY `room_id` (`room_id`,`residence_session_id`),
+  ADD KEY `tbl resevations_ibfk_1` (`room_id`) USING BTREE,
+  ADD KEY `residence_session_id` (`residence_session_id`) USING BTREE;
+
+--
+-- Indexes for table `tbl_residence_sessions`
+--
+ALTER TABLE `tbl_residence_sessions`
+  ADD PRIMARY KEY (`residence_session_id`),
+  ADD UNIQUE KEY `session_name` (`session_name`,`active_period_id`),
+  ADD KEY `active_period_id` (`active_period_id`);
+
+--
+-- Indexes for table `tbl_rights`
+--
+ALTER TABLE `tbl_rights`
+  ADD PRIMARY KEY (`right_id`);
+
+--
+-- Indexes for table `tbl_rooms`
+--
+ALTER TABLE `tbl_rooms`
+  ADD PRIMARY KEY (`room_id`),
+  ADD UNIQUE KEY `hostel_id_2` (`hostel_id`,`room_number`),
+  ADD KEY `hostel_id` (`hostel_id`),
+  ADD KEY `floor_id` (`floor_id`),
+  ADD KEY `room_type_id` (`room_type_id`);
+
+--
+-- Indexes for table `tbl_room_allocations`
+--
+ALTER TABLE `tbl_room_allocations`
+  ADD PRIMARY KEY (`room_allocation_id`) USING BTREE,
+  ADD UNIQUE KEY `student_id` (`student_id`,`residence_session_id`),
+  ADD KEY `period_id` (`active_period_id`) USING BTREE,
+  ADD KEY `room_id` (`room_id`) USING BTREE,
+  ADD KEY `application_id` (`application_id`) USING BTREE,
+  ADD KEY `residence_session_id` (`residence_session_id`) USING BTREE;
+
+--
+-- Indexes for table `tbl_room_allocation_applications`
+--
+ALTER TABLE `tbl_room_allocation_applications`
+  ADD PRIMARY KEY (`room_allocation_application_id`) USING BTREE,
+  ADD UNIQUE KEY `student_id` (`student_id`,`residence_session_id`,`active_period_id`),
+  ADD KEY `room_id` (`room_id`),
+  ADD KEY `resssidence_session_id` (`residence_session_id`),
+  ADD KEY `active_period_id` (`active_period_id`);
+
+--
+-- Indexes for table `tbl_room_preference`
+--
+ALTER TABLE `tbl_room_preference`
+  ADD PRIMARY KEY (`room_preference_id`),
+  ADD UNIQUE KEY `room_id` (`room_id`,`residence_session_id`),
+  ADD KEY `residence_session_id` (`residence_session_id`),
+  ADD KEY `active_period_id` (`active_period_id`),
+  ADD KEY `hostel_id` (`hostel_id`);
+
+--
+-- Indexes for table `tbl_room_status`
+--
+ALTER TABLE `tbl_room_status`
+  ADD PRIMARY KEY (`room_status_id`),
+  ADD UNIQUE KEY `room_id` (`room_id`,`residence_session_id`),
+  ADD KEY `period` (`active_period_id`),
+  ADD KEY `room` (`room_id`),
+  ADD KEY `residence_session_id` (`residence_session_id`);
+
+--
+-- Indexes for table `tbl_room_types`
+--
+ALTER TABLE `tbl_room_types`
+  ADD PRIMARY KEY (`room_type_id`),
+  ADD UNIQUE KEY `room_type` (`room_type`);
+
+--
+-- Indexes for table `tbl_room_type_costs`
+--
+ALTER TABLE `tbl_room_type_costs`
+  ADD PRIMARY KEY (`room_type_cost_id`) USING BTREE,
+  ADD UNIQUE KEY `room_type_id` (`room_type_id`,`active_period_id`),
+  ADD KEY `room_id` (`room_type_id`),
+  ADD KEY `active_period_id` (`active_period_id`);
+
+--
+-- Indexes for table `tbl_temp_room_allocations`
+--
+ALTER TABLE `tbl_temp_room_allocations`
+  ADD PRIMARY KEY (`temp_room_allocation_id`) USING BTREE,
+  ADD KEY `period_id` (`active_period_id`) USING BTREE,
+  ADD KEY `room_id` (`room_id`) USING BTREE,
+  ADD KEY `application_id` (`application_id`) USING BTREE,
+  ADD KEY `residence_session_id` (`residence_session_id`) USING BTREE;
+
+--
+-- Indexes for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `tbl_users_email_unique` (`email`);
+
+--
+-- Indexes for table `tbl_user_rights`
+--
+ALTER TABLE `tbl_user_rights`
+  ADD PRIMARY KEY (`user_right_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`right_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_academic_levels`
+--
+ALTER TABLE `tbl_academic_levels`
+  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_academic_years`
+--
+ALTER TABLE `tbl_academic_years`
+  MODIFY `year_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_active_period_hostel_online_application`
+--
+ALTER TABLE `tbl_active_period_hostel_online_application`
+  MODIFY `active_period_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT for table `tbl_blacklisted_students`
+--
+ALTER TABLE `tbl_blacklisted_students`
+  MODIFY `blacklisted_students_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_floors`
+--
+ALTER TABLE `tbl_floors`
+  MODIFY `floor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_hostels`
+--
+ALTER TABLE `tbl_hostels`
+  MODIFY `hostel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `tbl_hostel_preference`
+--
+ALTER TABLE `tbl_hostel_preference`
+  MODIFY `hostel_preference_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `tbl_locations`
+--
+ALTER TABLE `tbl_locations`
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_minimum_threshhold`
+--
+ALTER TABLE `tbl_minimum_threshhold`
+  MODIFY `minimum_threshhold_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+
+--
+-- AUTO_INCREMENT for table `tbl_resevations`
+--
+ALTER TABLE `tbl_resevations`
+  MODIFY `resavation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `tbl_residence_sessions`
+--
+ALTER TABLE `tbl_residence_sessions`
+  MODIFY `residence_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `tbl_rights`
+--
+ALTER TABLE `tbl_rights`
+  MODIFY `right_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_rooms`
+--
+ALTER TABLE `tbl_rooms`
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_allocations`
+--
+ALTER TABLE `tbl_room_allocations`
+  MODIFY `room_allocation_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_allocation_applications`
+--
+ALTER TABLE `tbl_room_allocation_applications`
+  MODIFY `room_allocation_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_preference`
+--
+ALTER TABLE `tbl_room_preference`
+  MODIFY `room_preference_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_status`
+--
+ALTER TABLE `tbl_room_status`
+  MODIFY `room_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_types`
+--
+ALTER TABLE `tbl_room_types`
+  MODIFY `room_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `tbl_room_type_costs`
+--
+ALTER TABLE `tbl_room_type_costs`
+  MODIFY `room_type_cost_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tbl_temp_room_allocations`
+--
+ALTER TABLE `tbl_temp_room_allocations`
+  MODIFY `temp_room_allocation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_rights`
+--
+ALTER TABLE `tbl_user_rights`
+  MODIFY `user_right_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_academic_levels`
+--
+ALTER TABLE `tbl_academic_levels`
+  ADD CONSTRAINT `tbl_academic_levels_ibfk_1` FOREIGN KEY (`year_id`) REFERENCES `tbl_academic_years` (`year_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_active_period_hostel_online_application`
+--
+ALTER TABLE `tbl_active_period_hostel_online_application`
+  ADD CONSTRAINT `tbl_active_period_hostel_online_application_ibfk_1` FOREIGN KEY (`period_id`) REFERENCES `registry`.`tblperiod` (`period_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_hostels`
+--
+ALTER TABLE `tbl_hostels`
+  ADD CONSTRAINT `tbl_hostels_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `tbl_locations` (`location_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_hostel_preference`
+--
+ALTER TABLE `tbl_hostel_preference`
+  ADD CONSTRAINT `tbl_hostel_preference_ibfk_1` FOREIGN KEY (`hostel_id`) REFERENCES `tbl_hostels` (`hostel_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_hostel_preference_ibfk_2` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_hostel_preference_ibfk_3` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_hostel_preference_ibfk_4` FOREIGN KEY (`floor_id`) REFERENCES `tbl_floors` (`floor_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_minimum_threshhold`
+--
+ALTER TABLE `tbl_minimum_threshhold`
+  ADD CONSTRAINT `tbl_minimum_threshhold_ibfk_1` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_resevations`
+--
+ALTER TABLE `tbl_resevations`
+  ADD CONSTRAINT `tbl_resevations_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_resevations_ibfk_3` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_residence_sessions`
+--
+ALTER TABLE `tbl_residence_sessions`
+  ADD CONSTRAINT `tbl_residence_sessions_ibfk_1` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_rooms`
+--
+ALTER TABLE `tbl_rooms`
+  ADD CONSTRAINT `floor_id` FOREIGN KEY (`floor_id`) REFERENCES `tbl_floors` (`floor_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `hostel_id` FOREIGN KEY (`hostel_id`) REFERENCES `tbl_hostels` (`hostel_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `tbl_room_types` (`room_type_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_room_allocations`
+--
+ALTER TABLE `tbl_room_allocations`
+  ADD CONSTRAINT `tbl_room_allocations_ibfk_1` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_allocations_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`room_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_allocations_ibfk_4` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_room_allocation_applications`
+--
+ALTER TABLE `tbl_room_allocation_applications`
+  ADD CONSTRAINT `tbl_room_allocation_applications_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`room_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_allocation_applications_ibfk_3` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_allocation_applications_ibfk_4` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_room_preference`
+--
+ALTER TABLE `tbl_room_preference`
+  ADD CONSTRAINT `tbl_room_preference_ibfk_1` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_preference_ibfk_2` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_preference_ibfk_3` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`room_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_preference_ibfk_4` FOREIGN KEY (`hostel_id`) REFERENCES `tbl_hostels` (`hostel_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_room_status`
+--
+ALTER TABLE `tbl_room_status`
+  ADD CONSTRAINT `period` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `room` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`room_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_status_ibfk_1` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_room_type_costs`
+--
+ALTER TABLE `tbl_room_type_costs`
+  ADD CONSTRAINT `tbl_room_type_costs_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `tbl_room_types` (`room_type_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_room_type_costs_ibfk_2` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_temp_room_allocations`
+--
+ALTER TABLE `tbl_temp_room_allocations`
+  ADD CONSTRAINT `tbl_temp_room_allocations_ibfk_1` FOREIGN KEY (`active_period_id`) REFERENCES `tbl_active_period_hostel_online_application` (`active_period_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_temp_room_allocations_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`room_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_temp_room_allocations_ibfk_3` FOREIGN KEY (`residence_session_id`) REFERENCES `tbl_residence_sessions` (`residence_session_id`) ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

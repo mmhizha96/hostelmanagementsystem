@@ -1,0 +1,108 @@
+<style>
+  .mycheck {
+    width: 20px;
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-9">
+
+  </div>
+  <div class="col-md-3">
+    <div *ngIf="feedback_message_status==1" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-check "></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+    <div *ngIf="feedback_message_status==2" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fas fa-ban"></i>
+      <small> {{ feedback_message }}</small>
+    </div>
+  </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">ASIGN RIGHTS <small>To {{user.name}}</small></h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+
+      <div class="card-body">
+        <form #rightsform="ngForm" (ngSubmit)="AssignRight() ">
+          <div class="row">
+
+
+            <div class="col-md-3">
+              <label for="">Create Room Costs</label>
+              <div class="mycheck"><input class="form-control" name="create_room_cost" type="checkbox" id=""
+                  [(ngModel)]="right.create_room_costs"></div>
+
+            </div>
+            <div class="col-md-3">
+              <label for="">Create Periods</label>
+              <div class="mycheck"><input class="form-control" name="create_periods" type="checkbox"
+                  [(ngModel)]="right.create_periods"></div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="">Allocate Rooms</label>
+              <div class="mycheck"><input class="form-control" name="allocate_rooms" type="checkbox"
+                  [(ngModel)]="right.allocate_rooms"></div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="">Create Users</label>
+              <div class="mycheck"><input class="form-control" name="create_users" type="checkbox"
+                  [(ngModel)]="right.create_users"></div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="">Create Hostel</label>
+              <div class="mycheck"><input class="form-control" name="create_hostel" type="checkbox"
+                  [(ngModel)]="right.create_hostel"></div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="">Approve Allocations</label>
+              <div class="mycheck"><input class="form-control" name="approve_allocations" type="checkbox"
+                  [(ngModel)]="right.approve_allocations"></div>
+            </div>
+            <div class="col-md-3">
+              <label for="">Reserve Rooms</label>
+              <div class="mycheck"><input class="form-control" name="reserve_rooms" type="checkbox"
+                  [(ngModel)]="right.reserve_rooms"></div>
+            </div>
+            <div class="col-md-3">
+              <label for="">Blacklist Students</label>
+              <div class="mycheck"><input class="form-control" name="blacklist_students" type="checkbox"
+                  [(ngModel)]="right.blacklist_students"></div>
+            </div>
+            <div class="col-md-3">
+              <label for="">Create Hostel Preference</label>
+              <div class="mycheck"><input class="form-control" name="hostel_preference" type="checkbox"
+                  [(ngModel)]="right.hostel_preference"></div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Save
+          </button>
+
+        </form>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.content-header -->
+  </div>
+</section>

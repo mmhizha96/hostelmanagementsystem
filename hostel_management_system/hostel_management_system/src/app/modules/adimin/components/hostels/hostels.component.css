@@ -1,0 +1,9 @@
+.name-link
+{
+  color: #000;
+}
+.name-link:hover {
+  color: #24b0ed;
+  text-decoration: underline;
+}
+
