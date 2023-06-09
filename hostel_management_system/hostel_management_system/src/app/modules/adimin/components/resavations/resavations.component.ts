@@ -49,6 +49,8 @@ this.myrights=this.params.getparam('myrights');
    if(this.session_batch==null){
     this.batchmodel.active_period_id="";
     this.batchmodel.residence_session_id="";
+
+    
    }
 
 else{

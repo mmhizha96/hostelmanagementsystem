@@ -131,16 +131,22 @@ export class RoomallocationComponent {
       .subscribe(
         (res) => {
 this.msg=res;
+this.feddback_message_status = 1;
+this.msg = res;
+this.feedback_message = this.msg.message;
+this.batchallocations_pending = this.msg.rooms;
 
           this.batchallocations_appproved = this.msg.allocations_appproved;
 
-          console.log(this.msg.allocations_appproved);
+
 
           this.batchallocations_pending = this.msg.allocations_pending;
-          this.dtTrigger.next;
+
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
+          this.feddback_message_status = 2;
+          this.feedback_message = error.error.message;
         }
       );
   }
@@ -167,7 +173,7 @@ this.msg=res;
           // console.log(res);
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
 
           this.feddback_message_status = 2;
           this.feedback_message = error.error.message;

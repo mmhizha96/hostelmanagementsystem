@@ -132,10 +132,7 @@
                   <i class="fa fa-eye"></i>
                   View Batches
                 </a>
-                <a class="dropdown-item" *ngIf="myrights.create_periods" (click)="setcreds(period)" data-toggle="modal"
-                  [attr.data-target]="'#edit-modal-lg' + i"> <i class="fas fa-edit"></i>
-                  Edit
-                </a>
+            
                 <a *ngIf="period.is_active == '0'&& myrights.create_periods" (click)="setcreds(period)" class="dropdown-item"
                   data-toggle="modal" [attr.data-target]="'#activate-modal-sm' + i"><i class="fa fa-check"></i>
                   activate

@@ -28,7 +28,7 @@ export class PeriodsComponent implements OnInit {
   result: any;
   batches: any;
   userrole: any;
-  myrights=new UserRights();
+  myrights = new UserRights();
   date = new Date();
   dtoptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
@@ -98,6 +98,9 @@ export class PeriodsComponent implements OnInit {
       .getperiods({ headers: this.authservice.getHeaders() })
       .subscribe((res) => {
         this.periods = res;
+      },error=>{
+        console.log(error);
+
       });
   }
   createActivePeriod() {
@@ -217,15 +220,17 @@ export class PeriodsComponent implements OnInit {
   getActivePeriods() {
     this.activeperiodservice
       .getActivePeriod({ headers: this.authservice.getHeaders() })
-      .subscribe((res) => {
-        this.active_periods = res;
+      .subscribe(
+        (res) => {
+          this.active_periods = res;
 
-        console.log(res);
+          console.log(res);
 
-        this.dtTrigger.next(null);
-      },error=>{
-        console.log(error);
-
-      });
+          this.dtTrigger.next(null);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }

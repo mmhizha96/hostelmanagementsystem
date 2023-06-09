@@ -37,6 +37,7 @@ import { RoomallocationService } from 'src/app/services/roomallocation.service';
 import { UsersComponent } from './components/users/users.component';
 import { UserRightsComponent } from './components/user-rights/user-rights.component';
 import { ViewBatchComponent } from './components/view-batch/view-batch.component';
+import { BlacklistComponent } from './components/blacklist/blacklist.component';
 
 
 
@@ -61,6 +62,7 @@ PeriodsComponent,
      UsersComponent,
      UserRightsComponent,
      ViewBatchComponent,
+     BlacklistComponent,
   ],
   imports: [
     FormsModule,

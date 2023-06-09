@@ -142,7 +142,7 @@
               <td class="btn-group">
 
 
-                <a *ngIf="user.is_active==0" class="btn btn-warning btn-sm" data-toggle="modal"
+                <a *ngIf="user.is_active==0" class="btn  btn-warning btn-sm" data-toggle="modal"
                   [attr.data-target]="'#activate-sm' + i">
                   Activate
                 </a>
@@ -151,10 +151,10 @@
 
                   Deactivate
                 </a>
-                <a class="btn btn-primary btn-sm" (click)="gotorights(user)" data-toggle="modal"
+                <a class="btn btn-primary btn-sm ml-2" (click)="gotorights(user)" data-toggle="modal"
                   [attr.data-target]="'#modal-sm' + i">
 
-                  Assign Rights
+                  Rights
                 </a>
               </td>
               <div class="modal fade" id="modal-sm{{ i }}">

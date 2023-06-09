@@ -20,7 +20,7 @@ class activePeriodsController extends Controller
             $activeperiod->activated_by = $request['activated_by'];
             $activeperiod->is_active = $request['is_active'];
             $activeperiod->save();
-            $allPeriods = active_period_hostel_online_application::orderBy('active_period_id', 'desc')->get();
+            $allPeriods =active_period_hostel_online_application::join('registry.tblperiod', 'registry.tblperiod.period_id', '=', 'tbl_active_period_hostel_online_application.period_id')->orderBy('active_period_id', 'desc')->get();
 
             return response()->json(['message' => 'successfully created period', 'success' => true, 'periods' => $allPeriods], 201);
         } catch (QueryException $e) {
@@ -49,7 +49,7 @@ class activePeriodsController extends Controller
             $activeperiod->is_active = '0';
 
             $activeperiod->update();
-            $allPeriods = active_period_hostel_online_application::orderBy('active_period_id', 'desc')->get();
+            $allPeriods = active_period_hostel_online_application::join('registry.tblperiod', 'registry.tblperiod.period_id', '=', 'tbl_active_period_hostel_online_application.period_id')->orderBy('active_period_id', 'desc')->get();
         } catch (QueryException $ex) {
             return response()->json(['error' => $ex->getMessage()], 500);
         }
@@ -68,7 +68,7 @@ class activePeriodsController extends Controller
         $allPeriods = null;
         try {
             $activeperiod->delete();
-            $allPeriods = active_period_hostel_online_application::join('tblperiod', 'tblperiod.period_id', '=', 'tbl_active_period_hostel_online_application.period_id')->orderBy('active_period_id', 'desc')->get();
+            $allPeriods = active_period_hostel_online_application::join('registry.tblperiod', 'registry.tblperiod.period_id', '=', 'tbl_active_period_hostel_online_application.period_id')->orderBy('active_period_id', 'desc')->get();
         } catch (QueryException $e) {
 
             if ($e->errorInfo[1] == 1451) {
@@ -96,7 +96,7 @@ class activePeriodsController extends Controller
             $activeperiod->is_active = '1';
 
             $activeperiod->update();
-            $allPeriods = active_period_hostel_online_application::orderBy('active_period_id', 'desc')->get();
+            $allPeriods = active_period_hostel_online_application::join('registry.tblperiod', 'registry.tblperiod.period_id', '=', 'tbl_active_period_hostel_online_application.period_id')->orderBy('active_period_id', 'desc')->get();
         } catch (QueryException $ex) {
             return response()->json(['error' => $ex->getMessage()], 500);
         }
@@ -123,7 +123,7 @@ class activePeriodsController extends Controller
                 return response()->json(['success' => false, 'message' => 'end date must be greater than start date'], 403);
             } else {
             $activeperiod->update();
-            $allPeriods = active_period_hostel_online_application::orderBy('active_period_id', 'desc')->get();
+            $allPeriods = active_period_hostel_online_application::join('registry.tblperiod', 'registry.tblperiod.period_id', '=', 'tbl_active_period_hostel_online_application.period_id')->orderBy('active_period_id', 'desc')->get();
             }
 
         } catch (QueryException $e) {
